@@ -111,7 +111,7 @@
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>Player Name</string>
     </property>
    </widget>
    <widget class="QPushButton" name="commitButton">
@@ -126,46 +126,6 @@
     <property name="text">
      <string>Commit Changes</string>
     </property>
-   </widget>
-   <widget class="QSpinBox" name="spinBox">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>130</y>
-      <width>81</width>
-      <height>29</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>130</y>
-      <width>111</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Human</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Elf</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Dwarf</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Orc</string>
-     </property>
-    </item>
    </widget>
    <widget class="QLineEdit" name="campaignName">
     <property name="geometry">
@@ -183,6 +143,32 @@
     </property>
     <property name="text">
      <string>Campaign Name</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="class_subclass">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>130</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>(Sub)Class</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="race">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>130</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Race</string>
     </property>
    </widget>
   </widget>

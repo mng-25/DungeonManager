@@ -21,9 +21,14 @@ private slots:
     void setNewFileName();
     void setSaveFileName();
     void setOpenFileName();
+
+    void updateFields();
+    void openDB(QString, bool); //true triggers a new DB
+
     void on_campaignName_editingFinished();
     void on_charName_editingFinished();
     void on_charList_itemSelectionChanged();
+    void on_playerName_editingFinished();
 
 signals:
 
