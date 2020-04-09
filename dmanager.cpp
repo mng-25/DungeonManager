@@ -11,10 +11,6 @@
 #include <QDebug>
 #include <QVariant>
 
-//Dialog dialog;
-//dialog.setModal(true);
-//dialog.exec();
-
 dmanager::dmanager(QWidget *parent) :QMainWindow(parent), ui(new Ui::dmanager)
 {
     ui->setupUi(this);
