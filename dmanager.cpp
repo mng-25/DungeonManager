@@ -32,6 +32,7 @@ dmanager::~dmanager()
 /*      Menubar slots       */
 void dmanager::setNewFileName()
 {
+    QSqlDatabase::database().close();
     QString newFileName = QFileDialog::getSaveFileName(this,tr("Save Campaign As - DManager"));
     currentFile = newFileName;
     openDB(newFileName,true);
