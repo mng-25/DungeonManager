@@ -66,6 +66,7 @@ void dmanager::updateFields()
     {
         ui->playerName->setText(update.value(0).toString());
         ui->class_subclass->setText(update.value(1).toString());
+        ui->race->setText(update.value(2).toString());
     }
 }
 void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing data
@@ -160,7 +161,7 @@ void dmanager::on_charName_editingFinished()
 }
 void dmanager::on_playerName_editingFinished()
 {
-    if(true)    //filter double inputs
+    if(true)    // possibly filter double inputs, in fututre
     {
         QSqlDatabase::database();
         QSqlQuery setPlayer;
@@ -173,6 +174,43 @@ void dmanager::on_playerName_editingFinished()
         else
         {
             debugMsg("Player name is: ",ui->playerName->text());
+        }
+    }
+}
+void dmanager::on_race_editingFinished()
+{
+    if(true)    // possibly filter double inputs, in fututre
+    {
+        QSqlDatabase::database();
+        QSqlQuery setRace;
+        setRace.prepare("UPDATE GameData SET Race = :race WHERE Character = :charName" );
+        setRace.bindValue(":charName",currentChar);
+        setRace.bindValue(":race",ui->race->text());
+        if(!setRace.exec()){
+            qWarning() << "Error setting race: " << setRace.lastError().text();
+        }
+        else
+        {
+            debugMsg("Character race is: ",ui->race->text());
+        }
+    }
+}
+
+void dmanager::on_class_subclass_editingFinished()
+{
+    if(true)    // possibly filter double inputs, in fututre
+    {
+        QSqlDatabase::database();
+        QSqlQuery setClass;
+        setClass.prepare("UPDATE GameData SET Class1 = :class WHERE Character = :charName" );
+        setClass.bindValue(":charName",currentChar);
+        setClass.bindValue(":class",ui->class_subclass->text());
+        if(!setClass.exec()){
+            qWarning() << "Error setting class: " << setClass.lastError().text();
+        }
+        else
+        {
+            debugMsg("Character class is: ",ui->class_subclass->text());
         }
     }
 }

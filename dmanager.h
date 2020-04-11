@@ -31,6 +31,10 @@ private slots:
     void on_charList_itemSelectionChanged();
     void on_playerName_editingFinished();
 
+    void on_race_editingFinished();
+
+    void on_class_subclass_editingFinished();
+
 signals:
 
 private:
