@@ -24,6 +24,7 @@ private slots:
 
     void updateFields();
     void openDB(QString, bool); //true triggers a new DB
+    void debugMsg(QString,QString);
 
     void on_campaignName_editingFinished();
     void on_charName_editingFinished();

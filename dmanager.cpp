@@ -1,4 +1,4 @@
-#include "globals.h"
+﻿#include "globals.h"
 #include "dmanager.h"
 #include "ui_dmanager.h"
 #include "dialog.h"
@@ -11,6 +11,8 @@
 #include <QDebug>
 #include <QVariant>
 
+
+/*      Constructor & Destructor        */
 dmanager::dmanager(QWidget *parent) :QMainWindow(parent), ui(new Ui::dmanager)
 {
     ui->setupUi(this);
@@ -46,13 +48,7 @@ void dmanager::setOpenFileName()
 }
 void dmanager::setSaveFileName()
 {
-        QString selectedFilter;
-        QString newfileName = QFileDialog::getSaveFileName(this,tr("Save Campaign As - DManager"));
-        const QString DRIVER("QSQLITE");
-        if(QSqlDatabase::isDriverAvailable(DRIVER)){
-            QSqlDatabase db = QSqlDatabase::addDatabase(DRIVER);
-            db.setDatabaseName(newfileName);
-        }
+        QString saveFileName = QFileDialog::getSaveFileName(this,tr("Save Campaign As - DManager"));
 }
 /*      General purpose slots      */
 void dmanager::updateFields()
@@ -93,35 +89,31 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
         {
             //do stuff here
         }
-
     }
+    debugMsg("Database file: ", filename);
+}
+void dmanager::debugMsg(QString message, QString error)
+{
+    //standard debug messaging template
     if(debugmode == 1)
     {
-        qDebug() << "Database file: " << filename;
+        qDebug() << message << error;
     }
 }
 /*      Data manipulation slots      */
 void dmanager::on_charList_itemSelectionChanged()
 {
    updateFields();
-   if(debugmode == 1)
-   {
-       qDebug() << "Current character is: " << currentChar;
-   }
+   debugMsg("Current character is: ",currentChar);
 }
 void dmanager::on_addCharButton_clicked()
 {
     QSqlDatabase::database();
     new QListWidgetItem(tr("New Character"), ui->charList);
-    if(debugmode == 1)
-    {
-        qDebug() << "New char row: " << ui->charList->currentRow();
-    }
-
+    debugMsg("New char row: ", QString::number(ui->charList->currentRow()));
     QSqlQuery newChar;
     newChar.prepare("INSERT into GameData (Character, RowID) VALUES ('New Character', :rowID)");
     newChar.bindValue(":rowID", ui->charList->currentRow());
-    //newChar.bindValue(":newName","New Character");
     if(!newChar.exec())
     {
         qWarning() << "Error adding character: " << newChar.lastError().text();
@@ -139,9 +131,9 @@ void dmanager::on_campaignName_editingFinished()
     if(!setCampaignName.exec()){
         qWarning() << "Error setting campaign name: " << setCampaignName.lastError().text();
     }
-    else if(debugmode == 1)
+    else
     {
-        qDebug() << "Campaign name is: " << ui->campaignName->text();
+        debugMsg("Campaign name is: ", ui->campaignName->text());
     }
 }
 void dmanager::on_charName_editingFinished()
@@ -149,13 +141,9 @@ void dmanager::on_charName_editingFinished()
     QString oldChar = ui->charList->currentItem()->text();
     if(oldChar != ui->charName->text())
     {
-        if(debugmode == 1)
-        {
-            qDebug() << "Old character name is: " << oldChar;
-        }
+        debugMsg("Old character name is: ", oldChar);
         ui->charList->currentItem()->setText(ui->charName->text());
         currentChar = ui->charList->currentItem()->text();
-
         QSqlDatabase::database();
         QSqlQuery setName;
         setName.prepare("UPDATE GameData SET Character = :newName WHERE Character = :oldName" );
@@ -164,9 +152,9 @@ void dmanager::on_charName_editingFinished()
         if(!setName.exec()){
             qWarning() << "Error setting character name: " << setName.lastError().text();
         }
-        else if(debugmode == 1)
+        else
         {
-            qDebug() << "Current character name is: " << currentChar;
+            debugMsg("Current character name is: ",currentChar);
         }
     }
 }
@@ -182,9 +170,9 @@ void dmanager::on_playerName_editingFinished()
         if(!setPlayer.exec()){
             qWarning() << "Error setting player name: " << setPlayer.lastError().text();
         }
-        else if(debugmode == 1)
+        else
         {
-            qDebug() << "Player name is: " << ui->playerName->text();
+            debugMsg("Player name is: ",ui->playerName->text());
         }
     }
 }
