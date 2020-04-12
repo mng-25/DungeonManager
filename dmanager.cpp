@@ -99,6 +99,7 @@ void dmanager::debugMsg(QString message, QString error)
     if(debugmode == 1)
     {
         qDebug() << message << error;
+        ui->statusbar->showMessage(message + error);
     }
 }
 /*      Data manipulation slots      */
@@ -195,7 +196,6 @@ void dmanager::on_race_editingFinished()
         }
     }
 }
-
 void dmanager::on_class_subclass_editingFinished()
 {
     if(true)    // possibly filter double inputs, in fututre
