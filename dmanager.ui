@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1327</width>
+    <width>1391</width>
     <height>843</height>
    </rect>
   </property>
@@ -17,11 +17,17 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>340</x>
       <y>170</y>
-      <width>981</width>
+      <width>1041</width>
       <height>621</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="currentIndex">
      <number>0</number>
@@ -33,10 +39,10 @@
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>29</x>
+        <x>8</x>
         <y>10</y>
-        <width>951</width>
-        <height>354</height>
+        <width>1021</width>
+        <height>281</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -49,31 +55,27 @@
        <property name="verticalSpacing">
         <number>2</number>
        </property>
-       <item row="2" column="2">
-        <widget class="QSpinBox" name="dexSpin"/>
-       </item>
-       <item row="2" column="8">
-        <widget class="QSpinBox" name="wisSpin"/>
-       </item>
-       <item row="2" column="4">
-        <widget class="QSpinBox" name="chrSpin"/>
-       </item>
-       <item row="9" column="6">
-        <widget class="QCheckBox" name="checkBox_6">
+       <item row="3" column="15">
+        <widget class="QLabel" name="arca_val">
          <property name="text">
-          <string>Religion</string>
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="7" column="10">
-        <widget class="QCheckBox" name="checkBox_19">
-         <property name="text">
-          <string>Performance</string>
+       <item row="2" column="15">
+        <widget class="QSpinBox" name="intMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
          </property>
         </widget>
        </item>
-       <item row="0" column="0" colspan="11">
-        <widget class="QLabel" name="label">
+       <item row="1" column="1" colspan="3">
+        <widget class="QLabel" name="strengthLabel">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
            <horstretch>0</horstretch>
@@ -82,82 +84,438 @@
          </property>
          <property name="font">
           <font>
-           <pointsize>19</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Base Stats</string>
+          <string>Strenth</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="6" column="11">
-        <widget class="QLabel" name="label_40">
+       <item row="4" column="7">
+        <widget class="QLabel" name="slha_val">
          <property name="text">
           <string>1</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="8" column="11">
-        <widget class="QLabel" name="label_38">
+       <item row="4" column="19">
+        <widget class="QLabel" name="insi_val">
          <property name="text">
           <string>1</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="5" column="8">
-        <widget class="QCheckBox" name="checkBox_7">
+       <item row="2" column="16" rowspan="6">
+        <widget class="Line" name="line_14">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="21" colspan="2">
+        <widget class="QCheckBox" name="pers_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Persuasion</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="7">
+        <widget class="QSpinBox" name="dexMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="7">
+        <widget class="QLabel" name="acro_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="13" colspan="2">
+        <widget class="QCheckBox" name="natr_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nature</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="13" colspan="2">
+        <widget class="QCheckBox" name="rlgn_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Religion</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="17" colspan="2">
+        <widget class="QCheckBox" name="anha_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Animal Handling</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="9">
-        <widget class="QLabel" name="label_41">
-         <property name="text">
-          <string>1</string>
+       <item row="7" column="17" colspan="2">
+        <widget class="QCheckBox" name="srvl_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         <property name="text">
+          <string>Survival</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="7">
-        <widget class="QLabel" name="label_31">
-         <property name="text">
-          <string>1</string>
+       <item row="5" column="21" colspan="2">
+        <widget class="QCheckBox" name="perf_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         <property name="text">
+          <string>Performance</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="7">
-        <spacer name="horizontalSpacer_5">
+       <item row="2" column="12" rowspan="6">
+        <widget class="Line" name="line_13">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Maximum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>30</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
-       <item row="1" column="11">
-        <spacer name="horizontalSpacer_8">
+       <item row="5" column="15">
+        <widget class="QLabel" name="inve_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="15">
+        <widget class="QLabel" name="rlgn_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="19">
+        <widget class="QLabel" name="medi_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="13" colspan="2">
+        <widget class="QCheckBox" name="hist_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>History</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5" colspan="2">
+        <widget class="QCheckBox" name="slha_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sleight of Hand</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="21" colspan="2">
+        <widget class="QCheckBox" name="intm_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Intimidation</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="19">
+        <widget class="QLabel" name="anha_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLabel" name="athl_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5" colspan="3">
+        <widget class="QLabel" name="dexterityLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Dexterity</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="9">
+        <widget class="QSpinBox" name="conBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="19">
+        <widget class="QSpinBox" name="wisMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="11">
+        <widget class="QSpinBox" name="conMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="23">
+        <widget class="QLabel" name="pers_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="23">
+        <widget class="QSpinBox" name="charMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="23">
+        <widget class="QLabel" name="perf_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QComboBox" name="dexAddSub">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>+</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="20" rowspan="6">
+        <widget class="Line" name="line_15">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="19">
+        <widget class="QLabel" name="prcp_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="21" colspan="2">
+        <widget class="QCheckBox" name="dcep_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Deception</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="22">
+        <widget class="QComboBox" name="charAddSub">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>+</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="strAddSub">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>+</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="17">
+        <widget class="QSpinBox" name="wisBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="21">
+        <widget class="QSpinBox" name="charBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="18">
+        <widget class="QComboBox" name="wisAddSub">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>+</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <spacer name="horizontalSpacer_11">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -172,381 +530,282 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="9">
-        <spacer name="horizontalSpacer_6">
+       <item row="2" column="24">
+        <spacer name="horizontalSpacer_10">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeType">
-          <enum>QSizePolicy::Maximum</enum>
+          <enum>QSizePolicy::MinimumExpanding</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>30</width>
+           <width>15</width>
            <height>20</height>
           </size>
          </property>
         </spacer>
        </item>
-       <item row="5" column="0">
-        <widget class="QCheckBox" name="checkBox_2">
+       <item row="1" column="13" colspan="3">
+        <widget class="QLabel" name="intelligenceLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Intelligence</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="13">
+        <widget class="QSpinBox" name="intBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="17" colspan="2">
+        <widget class="QCheckBox" name="insi_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Insight</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="10">
+        <widget class="QComboBox" name="conAddSub">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>+</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="7">
+        <widget class="QLabel" name="stlh_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2">
+        <widget class="QCheckBox" name="athl_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Athletics</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="10">
-        <widget class="QCheckBox" name="checkBox_10">
-         <property name="text">
-          <string>Persuasion</string>
+       <item row="6" column="17" colspan="2">
+        <widget class="QCheckBox" name="prcp_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
          </property>
-        </widget>
-       </item>
-       <item row="7" column="9">
-        <widget class="QLabel" name="label_33">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="6">
-        <widget class="QCheckBox" name="checkBox_11">
-         <property name="text">
-          <string>History</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="6">
-        <widget class="QLabel" name="label_5">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>Intelligence</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="9">
-        <widget class="QLabel" name="label_17">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="3">
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <widget class="QLabel" name="label_4">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>Constitution</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QCheckBox" name="checkBox_3">
-         <property name="text">
-          <string>Acrobatics</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="10">
-        <widget class="QCheckBox" name="checkBox_18">
-         <property name="text">
-          <string>Intimidation</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="9">
-        <widget class="QLabel" name="label_28">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="8">
-        <widget class="QCheckBox" name="checkBox_17">
          <property name="text">
           <string>Perception</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="8">
-        <widget class="QCheckBox" name="checkBox_16">
+       <item row="4" column="23">
+        <widget class="QLabel" name="intm_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QSpinBox" name="dexBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QSpinBox" name="strMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5" colspan="2">
+        <widget class="QCheckBox" name="acro_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Acrobatics</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="15">
+        <widget class="QLabel" name="natr_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="19">
+        <widget class="QLabel" name="srvl_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="13" colspan="2">
+        <widget class="QCheckBox" name="arca_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Arcana</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="14">
+        <widget class="QComboBox" name="intAddSub">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>+</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="17" colspan="2">
+        <widget class="QCheckBox" name="medi_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Medicine</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="2">
-        <widget class="QLabel" name="label_3">
+       <item row="1" column="21" colspan="3">
+        <widget class="QLabel" name="charismaLabel">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="text">
-          <string>Dexterity</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="8">
-        <widget class="QLabel" name="label_6">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>Wisdom</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="7">
-        <widget class="QLabel" name="label_32">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="3">
-        <widget class="QLabel" name="label_16">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="10">
-        <widget class="QLabel" name="label_7">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
          </property>
          <property name="text">
           <string>Charisma</string>
          </property>
-        </widget>
-       </item>
-       <item row="2" column="7">
-        <widget class="QLabel" name="label_44">
-         <property name="text">
-          <string>+1</string>
-         </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="7" column="6">
-        <widget class="QCheckBox" name="checkBox_12">
+       <item row="2" column="1">
+        <widget class="QSpinBox" name="strBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="13" colspan="2">
+        <widget class="QCheckBox" name="inve_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Investigation</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="5" column="5" colspan="2">
+        <widget class="QCheckBox" name="stlh_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
          </property>
-         <property name="text">
-          <string>Strenth</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <widget class="QLabel" name="label_42">
-         <property name="text">
-          <string>+1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QSpinBox" name="strSpin"/>
-       </item>
-       <item row="7" column="7">
-        <widget class="QLabel" name="label_30">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <spacer name="horizontalSpacer_7">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Maximum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>30</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="7" column="2">
-        <widget class="QCheckBox" name="checkBox_4">
          <property name="text">
           <string>Stealth</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="5">
-        <widget class="QLabel" name="label_43">
-         <property name="text">
-          <string>+1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="10">
-        <widget class="QCheckBox" name="checkBox_9">
-         <property name="text">
-          <string>Deception</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="6">
-        <widget class="QSpinBox" name="intSpin"/>
-       </item>
-       <item row="1" column="3">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Maximum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>30</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="label_36">
-         <property name="text">
-          <string>+1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="5">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Maximum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>30</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="10">
-        <widget class="QSpinBox" name="spinBox_6"/>
-       </item>
-       <item row="9" column="7">
-        <widget class="QLabel" name="label_35">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="11">
-        <widget class="QLabel" name="label_37">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="11">
-        <widget class="QLabel" name="label_39">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="11">
-        <widget class="QLabel" name="label_8">
+       <item row="0" column="1" colspan="23">
+        <widget class="QLabel" name="label">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -554,13 +813,13 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>20</height>
+           <height>30</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>50</height>
+           <height>40</height>
           </size>
          </property>
          <property name="font">
@@ -569,95 +828,86 @@
           </font>
          </property>
          <property name="text">
-          <string>Skills</string>
+          <string>Base Stats</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="5" column="6">
-        <widget class="QCheckBox" name="checkBox_5">
-         <property name="text">
-          <string>Arcana</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="3">
-        <widget class="QLabel" name="label_13">
+       <item row="3" column="23">
+        <widget class="QLabel" name="dcep_val">
          <property name="text">
           <string>1</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="9" column="8">
-        <widget class="QCheckBox" name="checkBox_8">
-         <property name="text">
-          <string>Survival</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="7">
-        <widget class="QLabel" name="label_34">
+       <item row="4" column="15">
+        <widget class="QLabel" name="hist_val">
          <property name="text">
           <string>1</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="6" column="8">
-        <widget class="QCheckBox" name="checkBox_15">
-         <property name="text">
-          <string>Insight</string>
+       <item row="1" column="9" colspan="3">
+        <widget class="QLabel" name="constitustionLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-        </widget>
-       </item>
-       <item row="8" column="6">
-        <widget class="QCheckBox" name="checkBox_14">
-         <property name="text">
-          <string>Nature</string>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
          </property>
-        </widget>
-       </item>
-       <item row="6" column="9">
-        <widget class="QLabel" name="label_29">
          <property name="text">
-          <string>1</string>
+          <string>Constitution</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="6" column="2">
-        <widget class="QCheckBox" name="checkBox_13">
-         <property name="text">
-          <string>Sleight of Hand</string>
+       <item row="1" column="17" colspan="3">
+        <widget class="QLabel" name="wisdomLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-        </widget>
-       </item>
-       <item row="2" column="11">
-        <widget class="QLabel" name="label_45">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
          <property name="text">
-          <string>+1</string>
+          <string>Wisdom</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="2" column="9">
-        <widget class="QLabel" name="label_46">
-         <property name="text">
-          <string>+1</string>
+       <item row="2" column="8" rowspan="4">
+        <widget class="Line" name="line_12">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </widget>
+       </item>
+       <item row="2" column="4" rowspan="4">
+        <widget class="Line" name="line_11">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
@@ -729,7 +979,7 @@
      <rect>
       <x>340</x>
       <y>130</y>
-      <width>281</width>
+      <width>161</width>
       <height>31</height>
      </rect>
     </property>
@@ -755,7 +1005,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>1221</width>
+      <width>901</width>
       <height>51</height>
      </rect>
     </property>
@@ -771,9 +1021,9 @@
    <widget class="QLineEdit" name="class_subclass">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>650</x>
       <y>130</y>
-      <width>131</width>
+      <width>261</width>
       <height>31</height>
      </rect>
     </property>
@@ -784,7 +1034,7 @@
    <widget class="QLineEdit" name="race">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>510</x>
       <y>130</y>
       <width>131</width>
       <height>31</height>
@@ -815,7 +1065,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1327</width>
+     <width>1391</width>
      <height>21</height>
     </rect>
    </property>
