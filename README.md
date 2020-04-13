@@ -1,10 +1,15 @@
-# DungeonManager
+DungeonManager is tool for managing DnD campaigns, employing an SQLite backend and built with Qt C++.
 
-DungeonManager is tool for managing DnD campaigns, employing an SQLite backend and built with Qt C++. 
+The aim of this project is to bring the functionality of web-based DnD services to the local machine.
 
-The aim of this project is to bring the functionality of web-based DnD services to the local machine. 
+<h1>Update! As of 4/13/2020:</h1>
 
-As of 4/9/20
+Will begin incorporating some content generation features from the OpenRPG project, and hopefully contribute some useful stuff there for them as well. Continuing development on a native character sheet frontend, and some extra features not currently in OpenRPG.
+
+  <li>Saved files can now be opened!
+  <li>Stat and skill fields in place, and their respective fields present; no connection between the two as of yet
+
+<h1>As of 4/9/20:</h1>
 Basic functionality for certain items is in place, with some exceptions:
 
   <li>No opening saved files
@@ -18,7 +23,7 @@ While no official roadmap exists (feel free to propose one), there are a number 
   <li>Soundboard
   <li>Export tools (zip, tar, text logging)
   <li>More robust player/NPC management view
-  
+
 With more time and resources:
 
   <li>Integrated web server for players
