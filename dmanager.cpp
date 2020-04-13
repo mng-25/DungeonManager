@@ -56,7 +56,7 @@ void dmanager::updateFields()
     currentChar = ui->charList->currentItem()->text();
     ui->charName->setText(currentChar);
     QSqlQuery update;
-    update.prepare("SELECT Player,Class1,Race FROM GameData WHERE Character = :charName");
+    update.prepare("SELECT Player,Class_Subclass,Race FROM GameData WHERE Character = :charName");
     update.bindValue(":charName",currentChar);
     if(!update.exec())
     {
@@ -84,14 +84,48 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
             query.exec("CREATE TABLE CampaignData "
                        "(Param TEXT PRIMARY KEY, Value TEXT)");
             query.exec("CREATE TABLE GameData "
-                       "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, Class1 TEXT, Race TEXT)");
+                       "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, "
+                       "Class_Subclass TEXT, Race TEXT, "
+                       "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
+                       "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
+                       "Profs TEXT)");
+            debugMsg("Created database file: ", filename);
         }
         else    //opening existing db
         {
-            //do stuff here
+            if(!query.exec("SELECT Character, RowID FROM GameData ORDER BY RowID ")) // fetch campaign metadata
+            {
+                qWarning() << "Error : " << query.lastError().text();
+            }
+            while(query.next())
+            {
+                ui->charList->addItem(query.value(0).toString());
+                debugMsg(query.value(0).toString(),query.value(1).toString());
+                ui->charList->setCurrentRow(0);
+                QApplication::processEvents();
+            }
+            query.exec("CREATE TABLE CampaignData "
+                       "(Param TEXT PRIMARY KEY, Value TEXT)");
+            query.exec("CREATE TABLE GameData "
+                       "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, "
+                       "Class_Subclass TEXT, Race TEXT, "
+                       "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
+                       "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
+                       "Profs TEXT)");
+            query.prepare("SELECT Value FROM CampaignData WHERE Param = 'CampaignName'"); // fetch campaign metadata
+            if(!query.exec())
+            {
+                qWarning() << "Error selecting campaign metadata: " << query.lastError().text();
+            }
+            while(query.next())
+            {
+                debugMsg("Fetched CampaignName: ", query.value(0).toString());
+                ui->campaignName->setText(query.value(0).toString());   // add fields as necessary
+            }
+            debugMsg("Opened database file: ", filename);
         }
     }
-    debugMsg("Database file: ", filename);
+
 }
 void dmanager::debugMsg(QString message, QString error)
 {
@@ -111,7 +145,7 @@ void dmanager::on_charList_itemSelectionChanged()
 void dmanager::on_addCharButton_clicked()
 {
     QSqlDatabase::database();
-    new QListWidgetItem(tr("New Character"), ui->charList);
+    ui->charList->addItem("New Character");
     debugMsg("New char row: ", QString::number(ui->charList->currentRow()));
     QSqlQuery newChar;
     newChar.prepare("INSERT into GameData (Character, RowID) VALUES ('New Character', :rowID)");
@@ -202,7 +236,7 @@ void dmanager::on_class_subclass_editingFinished()
     {
         QSqlDatabase::database();
         QSqlQuery setClass;
-        setClass.prepare("UPDATE GameData SET Class1 = :class WHERE Character = :charName" );
+        setClass.prepare("UPDATE GameData SET Class_Subclass = :class WHERE Character = :charName" );
         setClass.bindValue(":charName",currentChar);
         setClass.bindValue(":class",ui->class_subclass->text());
         if(!setClass.exec()){
