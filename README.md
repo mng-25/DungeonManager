@@ -1,8 +1,12 @@
 DungeonManager is tool for managing DnD campaigns, employing an SQLite backend and built with Qt C++.
-
+The project in this repository can be dropped into Qt Creator and *should* build on Linux with minimal gnashing of teeth.
 The aim of this project is to bring the functionality of web-based DnD services to the local machine.
 
-<h1>Update! As of 4/13/2020:</h1>
+<h1>Update! As of 4/14/2020 </h1>
+
+  <li>Stats are now persistant, and can be loaded with the "Open database" menu item.
+
+<h1>As of 4/13/2020:</h1>
 
 Will begin incorporating some content generation features from the OpenRPG project, and hopefully contribute some useful stuff there for them as well. Continuing development on a native character sheet frontend, and some extra features not currently in OpenRPG.
 
