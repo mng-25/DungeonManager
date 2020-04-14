@@ -32,14 +32,14 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="stats_and_saves">
      <attribute name="title">
       <string>Stats and Saves</string>
      </attribute>
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>8</x>
+        <x>-10</x>
         <y>10</y>
         <width>1021</width>
         <height>281</height>
@@ -55,8 +55,8 @@
        <property name="verticalSpacing">
         <number>2</number>
        </property>
-       <item row="3" column="15">
-        <widget class="QLabel" name="arca_val">
+       <item row="6" column="23">
+        <widget class="QLabel" name="pers_val">
          <property name="text">
           <string>1</string>
          </property>
@@ -65,33 +65,15 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="15">
-        <widget class="QSpinBox" name="intMod">
+       <item row="3" column="5" colspan="2">
+        <widget class="QCheckBox" name="acro_chk">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="3">
-        <widget class="QLabel" name="strengthLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
+           <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Strenth</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <string>Acrobatics</string>
          </property>
         </widget>
        </item>
@@ -102,90 +84,6 @@
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="19">
-        <widget class="QLabel" name="insi_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="16" rowspan="6">
-        <widget class="Line" name="line_14">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="21" colspan="2">
-        <widget class="QCheckBox" name="pers_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Persuasion</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="7">
-        <widget class="QSpinBox" name="dexMod">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="7">
-        <widget class="QLabel" name="acro_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="13" colspan="2">
-        <widget class="QCheckBox" name="natr_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nature</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="13" colspan="2">
-        <widget class="QCheckBox" name="rlgn_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Religion</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="17" colspan="2">
-        <widget class="QCheckBox" name="anha_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Animal Handling</string>
          </property>
         </widget>
        </item>
@@ -201,105 +99,21 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="21" colspan="2">
-        <widget class="QCheckBox" name="perf_chk">
+       <item row="1" column="21" colspan="3">
+        <widget class="QLabel" name="charismaLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Performance</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="12" rowspan="6">
-        <widget class="Line" name="line_13">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="15">
-        <widget class="QLabel" name="inve_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="15">
-        <widget class="QLabel" name="rlgn_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="19">
-        <widget class="QLabel" name="medi_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="13" colspan="2">
-        <widget class="QCheckBox" name="hist_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>History</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="5" colspan="2">
-        <widget class="QCheckBox" name="slha_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Sleight of Hand</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="21" colspan="2">
-        <widget class="QCheckBox" name="intm_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Intimidation</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="19">
-        <widget class="QLabel" name="anha_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="3">
-        <widget class="QLabel" name="athl_val">
-         <property name="text">
-          <string>1</string>
+          <string>Charisma</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -327,224 +141,102 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="9">
-        <widget class="QSpinBox" name="conBaseSpin">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="19">
-        <widget class="QSpinBox" name="wisMod">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="11">
-        <widget class="QSpinBox" name="conMod">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="23">
-        <widget class="QLabel" name="pers_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="23">
-        <widget class="QSpinBox" name="charMod">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="23">
-        <widget class="QLabel" name="perf_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="6">
-        <widget class="QComboBox" name="dexAddSub">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <item>
-          <property name="text">
-           <string>+</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>-</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="20" rowspan="6">
-        <widget class="Line" name="line_15">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="19">
-        <widget class="QLabel" name="prcp_val">
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="21" colspan="2">
-        <widget class="QCheckBox" name="dcep_chk">
+       <item row="7" column="13" colspan="2">
+        <widget class="QCheckBox" name="rlgn_chk">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Deception</string>
+          <string>Religion</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="22">
-        <widget class="QComboBox" name="charAddSub">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <item>
-          <property name="text">
-           <string>+</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>-</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QComboBox" name="strAddSub">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <item>
-          <property name="text">
-           <string>+</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>-</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="17">
-        <widget class="QSpinBox" name="wisBaseSpin">
+       <item row="2" column="7">
+        <widget class="QSpinBox" name="dexMod">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
         </widget>
        </item>
-       <item row="2" column="21">
-        <widget class="QSpinBox" name="charBaseSpin">
+       <item row="5" column="15">
+        <widget class="QLabel" name="inve_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="19">
+        <widget class="QLabel" name="medi_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="15">
+        <widget class="QSpinBox" name="intMod">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
         </widget>
        </item>
-       <item row="2" column="18">
-        <widget class="QComboBox" name="wisAddSub">
+       <item row="5" column="21" colspan="2">
+        <widget class="QCheckBox" name="perf_chk">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <pointsize>10</pointsize>
           </font>
          </property>
-         <item>
-          <property name="text">
-           <string>+</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>-</string>
-          </property>
-         </item>
+         <property name="text">
+          <string>Performance</string>
+         </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <spacer name="horizontalSpacer_11">
+       <item row="2" column="4" rowspan="4">
+        <widget class="Line" name="line_11">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::MinimumExpanding</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>15</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
-       <item row="2" column="24">
-        <spacer name="horizontalSpacer_10">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+       <item row="5" column="5" colspan="2">
+        <widget class="QCheckBox" name="stlh_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
          </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::MinimumExpanding</enum>
+         <property name="text">
+          <string>Stealth</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>15</width>
-           <height>20</height>
-          </size>
+        </widget>
+       </item>
+       <item row="4" column="19">
+        <widget class="QLabel" name="insi_val">
+         <property name="text">
+          <string>1</string>
          </property>
-        </spacer>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
        </item>
        <item row="1" column="13" colspan="3">
         <widget class="QLabel" name="intelligenceLabel">
@@ -567,46 +259,51 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="13">
-        <widget class="QSpinBox" name="intBaseSpin">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
+       <item row="2" column="12" rowspan="6">
+        <widget class="Line" name="line_13">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
-       <item row="4" column="17" colspan="2">
-        <widget class="QCheckBox" name="insi_chk">
+       <item row="6" column="21" colspan="2">
+        <widget class="QCheckBox" name="pers_chk">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Insight</string>
+          <string>Persuasion</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="10">
-        <widget class="QComboBox" name="conAddSub">
+       <item row="1" column="1" colspan="3">
+        <widget class="QLabel" name="strengthLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <pointsize>11</pointsize>
           </font>
          </property>
-         <item>
-          <property name="text">
-           <string>+</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>-</string>
-          </property>
-         </item>
+         <property name="text">
+          <string>Strenth</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="20" rowspan="6">
+        <widget class="Line" name="line_15">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
         </widget>
        </item>
        <item row="5" column="7">
@@ -619,15 +316,13 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="1" colspan="2">
-        <widget class="QCheckBox" name="athl_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
+       <item row="3" column="3">
+        <widget class="QLabel" name="athl_val">
          <property name="text">
-          <string>Athletics</string>
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -643,6 +338,18 @@
          </property>
         </widget>
        </item>
+       <item row="5" column="17" colspan="2">
+        <widget class="QCheckBox" name="medi_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Medicine</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="23">
         <widget class="QLabel" name="intm_val">
          <property name="text">
@@ -653,8 +360,8 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="5">
-        <widget class="QSpinBox" name="dexBaseSpin">
+       <item row="2" column="1" colspan="2">
+        <widget class="QSpinBox" name="strBaseSpin">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -662,44 +369,39 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="3">
-        <widget class="QSpinBox" name="strMod">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="5" colspan="2">
-        <widget class="QCheckBox" name="acro_chk">
+       <item row="6" column="13" colspan="2">
+        <widget class="QCheckBox" name="natr_chk">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Acrobatics</string>
+          <string>Nature</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="15">
-        <widget class="QLabel" name="natr_val">
-         <property name="text">
-          <string>1</string>
+       <item row="2" column="19">
+        <widget class="QSpinBox" name="wisMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
+         <property name="minimum">
+          <number>-99</number>
          </property>
         </widget>
        </item>
-       <item row="7" column="19">
-        <widget class="QLabel" name="srvl_val">
-         <property name="text">
-          <string>1</string>
+       <item row="4" column="17" colspan="2">
+        <widget class="QCheckBox" name="insi_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
+         <property name="text">
+          <string>Insight</string>
          </property>
         </widget>
        </item>
@@ -715,66 +417,35 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="14">
-        <widget class="QComboBox" name="intAddSub">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <item>
-          <property name="text">
-           <string>+</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>-</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="17" colspan="2">
-        <widget class="QCheckBox" name="medi_chk">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
+       <item row="3" column="7">
+        <widget class="QLabel" name="acro_val">
          <property name="text">
-          <string>Medicine</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="21" colspan="3">
-        <widget class="QLabel" name="charismaLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Charisma</string>
+          <string>1</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QSpinBox" name="strBaseSpin">
+       <item row="3" column="19">
+        <widget class="QLabel" name="anha_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="21" colspan="2">
+        <widget class="QCheckBox" name="dcep_chk">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>10</pointsize>
           </font>
+         </property>
+         <property name="text">
+          <string>Deception</string>
          </property>
         </widget>
        </item>
@@ -790,15 +461,132 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="5" colspan="2">
-        <widget class="QCheckBox" name="stlh_chk">
+       <item row="5" column="23">
+        <widget class="QLabel" name="perf_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5" colspan="2">
+        <widget class="QSpinBox" name="dexBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="17" colspan="2">
+        <widget class="QCheckBox" name="anha_chk">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Stealth</string>
+          <string>Animal Handling</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="19">
+        <widget class="QLabel" name="prcp_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="9" colspan="3">
+        <widget class="QLabel" name="constitustionLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Constitution</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5" colspan="2">
+        <widget class="QCheckBox" name="slha_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sleight of Hand</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="17" colspan="3">
+        <widget class="QLabel" name="wisdomLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Wisdom</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QSpinBox" name="strMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="23">
+        <widget class="QLabel" name="dcep_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="11">
+        <widget class="QSpinBox" name="conMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
          </property>
         </widget>
        </item>
@@ -835,13 +623,123 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="23">
-        <widget class="QLabel" name="dcep_val">
+       <item row="3" column="1" colspan="2">
+        <widget class="QCheckBox" name="athl_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Athletics</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <spacer name="horizontalSpacer_11">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>15</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="15">
+        <widget class="QLabel" name="arca_val">
          <property name="text">
           <string>1</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="13" colspan="2">
+        <widget class="QCheckBox" name="hist_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>History</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="9">
+        <widget class="QSpinBox" name="conBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="19">
+        <widget class="QLabel" name="srvl_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="15">
+        <widget class="QLabel" name="natr_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="15">
+        <widget class="QLabel" name="rlgn_val">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="23">
+        <widget class="QSpinBox" name="charMod">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="21" colspan="2">
+        <widget class="QCheckBox" name="intm_chk">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Intimidation</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="16" rowspan="6">
+        <widget class="Line" name="line_14">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
@@ -855,48 +753,6 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="9" colspan="3">
-        <widget class="QLabel" name="constitustionLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Constitution</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="17" colspan="3">
-        <widget class="QLabel" name="wisdomLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Wisdom</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="8" rowspan="4">
         <widget class="Line" name="line_12">
          <property name="orientation">
@@ -904,10 +760,62 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="4" rowspan="4">
-        <widget class="Line" name="line_11">
+       <item row="2" column="24">
+        <spacer name="horizontalSpacer_10">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>15</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="9" colspan="2">
+        <spacer name="horizontalSpacer_12">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>15</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="13" colspan="2">
+        <widget class="QSpinBox" name="intBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="21" colspan="2">
+        <widget class="QSpinBox" name="charBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="17" colspan="2">
+        <widget class="QSpinBox" name="wisBaseSpin">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
          </property>
         </widget>
        </item>
@@ -1093,6 +1001,7 @@
     <property name="title">
      <string>Tools</string>
     </property>
+    <addaction name="exportJSON"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -1126,7 +1035,54 @@
     <string>Save Campaign As...</string>
    </property>
   </action>
+  <action name="exportJSON">
+   <property name="text">
+    <string>Export to JSON</string>
+   </property>
+  </action>
  </widget>
+ <tabstops>
+  <tabstop>campaignName</tabstop>
+  <tabstop>addCharButton</tabstop>
+  <tabstop>charName</tabstop>
+  <tabstop>playerName</tabstop>
+  <tabstop>race</tabstop>
+  <tabstop>class_subclass</tabstop>
+  <tabstop>strBaseSpin</tabstop>
+  <tabstop>strMod</tabstop>
+  <tabstop>dexBaseSpin</tabstop>
+  <tabstop>dexMod</tabstop>
+  <tabstop>conBaseSpin</tabstop>
+  <tabstop>conMod</tabstop>
+  <tabstop>intBaseSpin</tabstop>
+  <tabstop>intMod</tabstop>
+  <tabstop>wisBaseSpin</tabstop>
+  <tabstop>wisMod</tabstop>
+  <tabstop>charBaseSpin</tabstop>
+  <tabstop>charMod</tabstop>
+  <tabstop>slha_chk</tabstop>
+  <tabstop>intm_chk</tabstop>
+  <tabstop>insi_chk</tabstop>
+  <tabstop>athl_chk</tabstop>
+  <tabstop>prcp_chk</tabstop>
+  <tabstop>srvl_chk</tabstop>
+  <tabstop>hist_chk</tabstop>
+  <tabstop>acro_chk</tabstop>
+  <tabstop>arca_chk</tabstop>
+  <tabstop>medi_chk</tabstop>
+  <tabstop>anha_chk</tabstop>
+  <tabstop>inve_chk</tabstop>
+  <tabstop>stlh_chk</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>killCharButton</tabstop>
+  <tabstop>pers_chk</tabstop>
+  <tabstop>natr_chk</tabstop>
+  <tabstop>commitButton</tabstop>
+  <tabstop>dcep_chk</tabstop>
+  <tabstop>rlgn_chk</tabstop>
+  <tabstop>perf_chk</tabstop>
+  <tabstop>charList</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
