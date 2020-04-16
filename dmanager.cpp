@@ -77,7 +77,7 @@ void dmanager::updateFields()
     {
         case 0: //stats_and_saves tab active
             QSqlQuery update;
-            update.prepare("SELECT StrBase,DexBase,ConBase,IntBase,WisBase,CharBase,StrMod,DexMod,ConMod,IntMod,WisMod,CharMod "
+            update.prepare("SELECT StrBase,DexBase,ConBase,IntBase,WisBase,CharBase,StrMod,DexMod,ConMod,IntMod,WisMod,CharMod,Profs "
                            "FROM GameData WHERE Character = :charName");
             update.bindValue(":charName",currentChar);
             if(!update.exec())
@@ -98,6 +98,103 @@ void dmanager::updateFields()
                 ui->intMod->setValue(update.value(9).toInt());
                 ui->wisMod->setValue(update.value(10).toInt());
                 ui->charMod->setValue(update.value(11).toInt());
+                /*       Update proficiencies       */
+                QString profs = update.value(12).toString();
+                QStringList profsList = profs.split(',');
+                for(int i = 0; i < profsList.count(); i++)  //Switch case not possible with strings, makes this messier than I'd like
+                {
+                    if(profsList[i] == "acro")
+                    {
+                        debugMsg("Proficiency in ", "acrobatics",1);
+                        ui->acro_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "athl")
+                    {
+                        debugMsg("Proficiency in ", "athletics",1);
+                        ui->athl_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "slha")
+                    {
+                        debugMsg("Proficiency in ", "sleight of hand",1);
+                        ui->slha_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "stlh")
+                    {
+                        debugMsg("Proficiency in ", "stealth",1);
+                        ui->stlh_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "arca")
+                    {
+                        debugMsg("Proficiency in ", "arcana",1);
+                        ui->arca_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "hist")
+                    {
+                        debugMsg("Proficiency in ", "history",1);
+                    }
+                    else if(profsList[i] == "inve")
+                    {
+                        debugMsg("Proficiency in ", "investigation",1);
+                        ui->inve_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "natr")
+                    {
+                        debugMsg("Proficiency in ", "nature",1);
+                        ui->natr_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "rlgn")
+                    {
+                        debugMsg("Proficiency in ", "religion",1);
+                        ui->rlgn_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "anha")
+                    {
+                        debugMsg("Proficiency in ", "animal handling",1);
+                        ui->anha_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "insi")
+                    {
+                        debugMsg("Proficiency in ", "insight",1);
+                        ui->insi_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "medi")
+                    {
+                        debugMsg("Proficiency in ", "medicine",1);
+                        ui->medi_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "prcp")
+                    {
+                        debugMsg("Proficiency in ", "perception",1);
+                        ui->prcp_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "srvl")
+                    {
+                        debugMsg("Proficiency in ", "survival",1);
+                        ui->srvl_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "dcep")
+                    {
+                        debugMsg("Proficiency in ", "deception",1);
+                        ui->dcep_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "intm")
+                    {
+                        debugMsg("Proficiency in ", "intimidation",1);
+                        ui->intm_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "perf")
+                    {
+                        debugMsg("Proficiency in ", "performance",1);
+                        ui->perf_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "pers")
+                    {
+                        debugMsg("Proficiency in ", "persuasion",1);
+                        ui->pers_chk->setCheckState(Qt::Checked);
+                    }
+
+                }
+
             }
         //case 1: //other tab active
             //do stuff
@@ -305,7 +402,7 @@ void dmanager::on_class_subclass_editingFinished()
         }
     }
 }
-
+        /*      Stats & Profs       */
 void dmanager::on_strBaseSpin_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
@@ -342,7 +439,6 @@ void dmanager::on_strMod_valueChanged(int arg1)
         }
     }
 }
-
 void dmanager::on_dexBaseSpin_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
@@ -379,7 +475,6 @@ void dmanager::on_dexMod_valueChanged(int arg1)
         }
     }
 }
-
 void dmanager::on_conBaseSpin_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
@@ -416,7 +511,6 @@ void dmanager::on_conMod_valueChanged(int arg1)
         }
     }
 }
-
 void dmanager::on_intBaseSpin_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
@@ -453,7 +547,6 @@ void dmanager::on_intMod_valueChanged(int arg1)
         }
     }
 }
-
 void dmanager::on_wisBaseSpin_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
@@ -490,7 +583,6 @@ void dmanager::on_wisMod_valueChanged(int arg1)
         }
     }
 }
-
 void dmanager::on_charBaseSpin_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
