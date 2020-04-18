@@ -97,7 +97,7 @@ void dmanager::updateFields()
     {
         case 0: //stats_and_saves tab active
             QSqlQuery update;
-            update.prepare("SELECT StrBase,DexBase,ConBase,IntBase,WisBase,CharBase,StrMod,DexMod,ConMod,IntMod,WisMod,CharMod,Profs "
+            update.prepare("SELECT StrBase,DexBase,ConBase,IntBase,WisBase,ChaBase,StrMod,DexMod,ConMod,IntMod,WisMod,ChaMod,Profs "
                            "FROM GameData WHERE Character = :charName");
             update.bindValue(":charName",currentChar);
             if(!update.exec())
@@ -111,13 +111,13 @@ void dmanager::updateFields()
                 ui->conBaseSpin->setValue(update.value(2).toInt());
                 ui->intBaseSpin->setValue(update.value(3).toInt());
                 ui->wisBaseSpin->setValue(update.value(4).toInt());
-                ui->charBaseSpin->setValue(update.value(5).toInt());
+                ui->chaBaseSpin->setValue(update.value(5).toInt());
                 ui->strMod->setValue(update.value(6).toInt());
                 ui->dexMod->setValue(update.value(7).toInt());
                 ui->conMod->setValue(update.value(8).toInt());
                 ui->intMod->setValue(update.value(9).toInt());
                 ui->wisMod->setValue(update.value(10).toInt());
-                ui->charMod->setValue(update.value(11).toInt());
+                ui->chaMod->setValue(update.value(11).toInt());
                 /*       Update proficiencies       */
                 QString profs = update.value(12).toString();
                 QStringList profsList = profs.split(',');
@@ -264,8 +264,8 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
             query.exec("CREATE TABLE GameData "
                        "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, "
                        "Class_Subclass TEXT, Race TEXT, "
-                       "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, CharBase INTEGER,"
-                       "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, CharMod INTEGER, "
+                       "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
+                       "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
                        "Profs TEXT)");
             debugMsg("Created database file: ", filename,1);
         }
@@ -287,8 +287,8 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
             query.exec("CREATE TABLE GameData "
                        "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, "
                        "Class_Subclass TEXT, Race TEXT, "
-                       "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, CharBase INTEGER,"
-                       "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, CharMod INTEGER, "
+                       "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
+                       "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
                        "Profs TEXT)");
             query.prepare("SELECT Value FROM CampaignData WHERE Param = 'CampaignName'"); // fetch campaign metadata
             if(!query.exec())
@@ -626,13 +626,13 @@ void dmanager::on_wisMod_valueChanged(int arg1)
         }
     }
 }
-void dmanager::on_charBaseSpin_valueChanged(int arg1)
+void dmanager::on_chaBaseSpin_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
     {
         QSqlDatabase::database();
         QSqlQuery setStat;
-        setStat.prepare("UPDATE GameData SET CharBase = :stat WHERE Character = :charName" );
+        setStat.prepare("UPDATE GameData SET ChaBase = :stat WHERE Character = :charName" );
         setStat.bindValue(":charName",currentChar);
         setStat.bindValue(":stat",arg1);
         if(!setStat.exec()){
@@ -644,13 +644,13 @@ void dmanager::on_charBaseSpin_valueChanged(int arg1)
         }
     }
 }
-void dmanager::on_charMod_valueChanged(int arg1)
+void dmanager::on_chaMod_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
     {
         QSqlDatabase::database();
         QSqlQuery setStat;
-        setStat.prepare("UPDATE GameData SET CharMod = :stat WHERE Character = :charName" );
+        setStat.prepare("UPDATE GameData SET ChaMod = :stat WHERE Character = :charName" );
         setStat.bindValue(":charName",currentChar);
         setStat.bindValue(":stat",arg1);
         if(!setStat.exec()){

@@ -48,8 +48,8 @@ private slots:
     void on_intMod_valueChanged(int arg1);
     void on_wisBaseSpin_valueChanged(int arg1);
     void on_wisMod_valueChanged(int arg1);
-    void on_charBaseSpin_valueChanged(int arg1);
-    void on_charMod_valueChanged(int arg1);
+    void on_chaBaseSpin_valueChanged(int arg1);
+    void on_chaMod_valueChanged(int arg1);
     void profToggle();
 
 signals:
