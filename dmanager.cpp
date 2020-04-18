@@ -20,6 +20,26 @@ dmanager::dmanager(QWidget *parent) :QMainWindow(parent), ui(new Ui::dmanager)
     connect(ui->o_campaign, &QAction::triggered,this, &dmanager::setOpenFileName);
     connect(ui->n_campaign, &QAction::triggered,this, &dmanager::setNewFileName);
     connect(ui->exportJSON, &QAction::triggered,this, &dmanager::export_JSON);
+
+    connect(ui->athl_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->acro_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->slha_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->stlh_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->arca_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->hist_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->inve_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->natr_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->rlgn_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->anha_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->insi_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->medi_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->prcp_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->srvl_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->dcep_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->intm_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->perf_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->pers_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+
     openDB(":memory:",true);
 }
 dmanager::~dmanager()
@@ -101,17 +121,35 @@ void dmanager::updateFields()
                 /*       Update proficiencies       */
                 QString profs = update.value(12).toString();
                 QStringList profsList = profs.split(',');
+                ui->athl_chk->setCheckState(Qt::Unchecked);
+                ui->acro_chk->setCheckState(Qt::Unchecked);
+                ui->slha_chk->setCheckState(Qt::Unchecked);
+                ui->stlh_chk->setCheckState(Qt::Unchecked);
+                ui->arca_chk->setCheckState(Qt::Unchecked);
+                ui->hist_chk->setCheckState(Qt::Unchecked);
+                ui->inve_chk->setCheckState(Qt::Unchecked);
+                ui->natr_chk->setCheckState(Qt::Unchecked);
+                ui->rlgn_chk->setCheckState(Qt::Unchecked);
+                ui->anha_chk->setCheckState(Qt::Unchecked);
+                ui->insi_chk->setCheckState(Qt::Unchecked);
+                ui->medi_chk->setCheckState(Qt::Unchecked);
+                ui->prcp_chk->setCheckState(Qt::Unchecked);
+                ui->srvl_chk->setCheckState(Qt::Unchecked);
+                ui->dcep_chk->setCheckState(Qt::Unchecked);
+                ui->intm_chk->setCheckState(Qt::Unchecked);
+                ui->perf_chk->setCheckState(Qt::Unchecked);
+                ui->pers_chk->setCheckState(Qt::Unchecked);
                 for(int i = 0; i < profsList.count(); i++)  //Switch case not possible with strings, makes this messier than I'd like
                 {
-                    if(profsList[i] == "acro")
-                    {
-                        debugMsg("Proficiency in ", "acrobatics",1);
-                        ui->acro_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "athl")
+                    if(profsList[i] == "athl")
                     {
                         debugMsg("Proficiency in ", "athletics",1);
                         ui->athl_chk->setCheckState(Qt::Checked);
+                    }
+                    else if(profsList[i] == "acro")
+                    {
+                        debugMsg("Proficiency in ", "acrobatics",1);
+                        ui->acro_chk->setCheckState(Qt::Checked);
                     }
                     else if(profsList[i] == "slha")
                     {
@@ -131,6 +169,7 @@ void dmanager::updateFields()
                     else if(profsList[i] == "hist")
                     {
                         debugMsg("Proficiency in ", "history",1);
+                        ui->hist_chk->setCheckState(Qt::Checked);
                     }
                     else if(profsList[i] == "inve")
                     {
@@ -403,6 +442,10 @@ void dmanager::on_class_subclass_editingFinished()
     }
 }
         /*      Stats & Profs       */
+        /* MNG TODO: Convert individual
+         * slots into general slots
+         * and connect to signals, once
+         * I get that working       */
 void dmanager::on_strBaseSpin_valueChanged(int arg1)
 {
     if(true)    // possibly filter double inputs, in fututre
@@ -617,5 +660,97 @@ void dmanager::on_charMod_valueChanged(int arg1)
         {
             debugMsg("Character charisma mod is: ",QString::number(arg1),1);
         }
+    }
+}
+void dmanager::profToggle()
+{
+    debugMsg(sender()->objectName(), " toggled", 1);
+    QString profsList;
+    if(true)        //for folding purposes
+    {
+        if(ui->acro_chk->isChecked()==true)
+        {
+            profsList += "athl,";
+        }
+        if(ui->athl_chk->isChecked()==true)
+        {
+            profsList += "acro,";
+        }
+        if(ui->slha_chk->isChecked()==true)
+        {
+            profsList += "slha,";
+        }
+        if(ui->stlh_chk->isChecked()==true)
+        {
+            profsList += "stlh,";
+        }
+        if(ui->arca_chk->isChecked()==true)
+        {
+            profsList += "arca,";
+        }
+        if(ui->hist_chk->isChecked()==true)
+        {
+            profsList += "hist,";
+        }
+        if(ui->inve_chk->isChecked()==true)
+        {
+            profsList += "inve,";
+        }
+        if(ui->natr_chk->isChecked()==true)
+        {
+            profsList += "natr,";
+        }
+        if(ui->rlgn_chk->isChecked()==true)
+        {
+            profsList += "rlgn,";
+        }
+        if(ui->anha_chk->isChecked()==true)
+        {
+            profsList += "anha,";
+        }
+        if(ui->insi_chk->isChecked()==true)
+        {
+            profsList += "insi,";
+        }
+        if(ui->medi_chk->isChecked()==true)
+        {
+            profsList += "medi,";
+        }
+        if(ui->prcp_chk->isChecked()==true)
+        {
+            profsList += "prcp,";
+        }
+        if(ui->srvl_chk->isChecked()==true)
+        {
+            profsList += "srvl,";
+        }
+        if(ui->dcep_chk->isChecked()==true)
+        {
+            profsList += "dcep,";
+        }
+        if(ui->intm_chk->isChecked()==true)
+        {
+            profsList += "intm,";
+        }
+        if(ui->perf_chk->isChecked()==true)
+        {
+            profsList += "perf,";
+        }
+        if(ui->pers_chk->isChecked()==true)
+        {
+            profsList += "pers,";
+        }
+    }
+    QSqlDatabase::database();
+    QSqlQuery setProf;
+    setProf.prepare("UPDATE GameData SET Profs = :prof WHERE Character = :charName" );
+    setProf.bindValue(":charName",currentChar);
+    setProf.bindValue(":prof",profsList);
+    if(!setProf.exec()){
+        debugMsg("Error setting skills: " , setProf.lastError().text(),2);
+    }
+    else
+    {
+        debugMsg(currentChar + " skills: ", profsList,1);
     }
 }
