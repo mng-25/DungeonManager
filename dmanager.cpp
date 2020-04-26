@@ -96,145 +96,216 @@ void dmanager::updateFields()
     switch (ui->tabWidget->currentIndex())
     {
         case 0: //stats_and_saves tab active
-            QSqlQuery update;
-            update.prepare("SELECT StrBase,DexBase,ConBase,IntBase,WisBase,ChaBase,StrMod,DexMod,ConMod,IntMod,WisMod,ChaMod,Profs "
-                           "FROM GameData WHERE Character = :charName");
-            update.bindValue(":charName",currentChar);
-            if(!update.exec())
+        /*ui->athl_chk->setCheckState(Qt::Unchecked);
+        ui->acro_chk->setCheckState(Qt::Unchecked);
+        ui->slha_chk->setCheckState(Qt::Unchecked);
+        ui->stlh_chk->setCheckState(Qt::Unchecked);
+        ui->arca_chk->setCheckState(Qt::Unchecked);
+        ui->hist_chk->setCheckState(Qt::Unchecked);
+        ui->inve_chk->setCheckState(Qt::Unchecked);
+        ui->natr_chk->setCheckState(Qt::Unchecked);
+        ui->rlgn_chk->setCheckState(Qt::Unchecked);
+        ui->anha_chk->setCheckState(Qt::Unchecked);
+        ui->insi_chk->setCheckState(Qt::Unchecked);
+        ui->medi_chk->setCheckState(Qt::Unchecked);
+        ui->prcp_chk->setCheckState(Qt::Unchecked);
+        ui->srvl_chk->setCheckState(Qt::Unchecked);
+        ui->dcep_chk->setCheckState(Qt::Unchecked);
+        ui->intm_chk->setCheckState(Qt::Unchecked);
+        ui->perf_chk->setCheckState(Qt::Unchecked);
+        ui->pers_chk->setCheckState(Qt::Unchecked);*/
+        QSqlQuery update;
+        update.prepare("SELECT StrBase,DexBase,ConBase,IntBase,WisBase,ChaBase,StrMod,DexMod,ConMod,IntMod,WisMod,ChaMod,Profs "
+                       "FROM GameData WHERE Character = :charName");
+        update.bindValue(":charName",currentChar);
+        if(!update.exec())
+        {
+            debugMsg("Error updating stats: " , update.lastError().text(),2);
+        }
+        while(update.next())
+        {
+            ui->strBaseSpin->setValue(update.value(0).toInt());
+            ui->dexBaseSpin->setValue(update.value(1).toInt());
+            ui->conBaseSpin->setValue(update.value(2).toInt());
+            ui->intBaseSpin->setValue(update.value(3).toInt());
+            ui->wisBaseSpin->setValue(update.value(4).toInt());
+            ui->chaBaseSpin->setValue(update.value(5).toInt());
+            ui->strMod->setValue(update.value(6).toInt());
+            int currentStrMod = update.value(6).toInt();
+            ui->dexMod->setValue(update.value(7).toInt());
+            int currentDexMod = update.value(7).toInt();
+            ui->conMod->setValue(update.value(8).toInt());
+            int currentConMod = update.value(8).toInt();
+            ui->intMod->setValue(update.value(9).toInt());
+            int currentIntMod = update.value(9).toInt();
+            ui->wisMod->setValue(update.value(10).toInt());
+            int currentWisMod = update.value(10).toInt();
+            ui->chaMod->setValue(update.value(11).toInt());
+            int currentChaMod = update.value(11).toInt();
+            /*       Update proficiencies       */
+            QString profs = update.value(12).toString();
+            int levelProfMod = 0;
+            if(ui->lvl_spin->value()<5)
             {
-                debugMsg("Error updating stats: " , update.lastError().text(),2);
+                levelProfMod +=2;
             }
-            while(update.next())
+            else if(ui->lvl_spin->value()>=5 && ui->lvl_spin->value()<9)
             {
-                ui->strBaseSpin->setValue(update.value(0).toInt());
-                ui->dexBaseSpin->setValue(update.value(1).toInt());
-                ui->conBaseSpin->setValue(update.value(2).toInt());
-                ui->intBaseSpin->setValue(update.value(3).toInt());
-                ui->wisBaseSpin->setValue(update.value(4).toInt());
-                ui->chaBaseSpin->setValue(update.value(5).toInt());
-                ui->strMod->setValue(update.value(6).toInt());
-                ui->dexMod->setValue(update.value(7).toInt());
-                ui->conMod->setValue(update.value(8).toInt());
-                ui->intMod->setValue(update.value(9).toInt());
-                ui->wisMod->setValue(update.value(10).toInt());
-                ui->chaMod->setValue(update.value(11).toInt());
-                /*       Update proficiencies       */
-                QString profs = update.value(12).toString();
-                QStringList profsList = profs.split(',');
-                ui->athl_chk->setCheckState(Qt::Unchecked);
-                ui->acro_chk->setCheckState(Qt::Unchecked);
-                ui->slha_chk->setCheckState(Qt::Unchecked);
-                ui->stlh_chk->setCheckState(Qt::Unchecked);
-                ui->arca_chk->setCheckState(Qt::Unchecked);
-                ui->hist_chk->setCheckState(Qt::Unchecked);
-                ui->inve_chk->setCheckState(Qt::Unchecked);
-                ui->natr_chk->setCheckState(Qt::Unchecked);
-                ui->rlgn_chk->setCheckState(Qt::Unchecked);
-                ui->anha_chk->setCheckState(Qt::Unchecked);
-                ui->insi_chk->setCheckState(Qt::Unchecked);
-                ui->medi_chk->setCheckState(Qt::Unchecked);
-                ui->prcp_chk->setCheckState(Qt::Unchecked);
-                ui->srvl_chk->setCheckState(Qt::Unchecked);
-                ui->dcep_chk->setCheckState(Qt::Unchecked);
-                ui->intm_chk->setCheckState(Qt::Unchecked);
-                ui->perf_chk->setCheckState(Qt::Unchecked);
-                ui->pers_chk->setCheckState(Qt::Unchecked);
-                for(int i = 0; i < profsList.count(); i++)  //Switch case not possible with strings, makes this messier than I'd like
-                {
-                    if(profsList[i] == "athl")
-                    {
-                        debugMsg("Proficiency in ", "athletics",1);
-                        ui->athl_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "acro")
-                    {
-                        debugMsg("Proficiency in ", "acrobatics",1);
-                        ui->acro_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "slha")
-                    {
-                        debugMsg("Proficiency in ", "sleight of hand",1);
-                        ui->slha_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "stlh")
-                    {
-                        debugMsg("Proficiency in ", "stealth",1);
-                        ui->stlh_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "arca")
-                    {
-                        debugMsg("Proficiency in ", "arcana",1);
-                        ui->arca_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "hist")
-                    {
-                        debugMsg("Proficiency in ", "history",1);
-                        ui->hist_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "inve")
-                    {
-                        debugMsg("Proficiency in ", "investigation",1);
-                        ui->inve_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "natr")
-                    {
-                        debugMsg("Proficiency in ", "nature",1);
-                        ui->natr_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "rlgn")
-                    {
-                        debugMsg("Proficiency in ", "religion",1);
-                        ui->rlgn_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "anha")
-                    {
-                        debugMsg("Proficiency in ", "animal handling",1);
-                        ui->anha_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "insi")
-                    {
-                        debugMsg("Proficiency in ", "insight",1);
-                        ui->insi_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "medi")
-                    {
-                        debugMsg("Proficiency in ", "medicine",1);
-                        ui->medi_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "prcp")
-                    {
-                        debugMsg("Proficiency in ", "perception",1);
-                        ui->prcp_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "srvl")
-                    {
-                        debugMsg("Proficiency in ", "survival",1);
-                        ui->srvl_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "dcep")
-                    {
-                        debugMsg("Proficiency in ", "deception",1);
-                        ui->dcep_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "intm")
-                    {
-                        debugMsg("Proficiency in ", "intimidation",1);
-                        ui->intm_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "perf")
-                    {
-                        debugMsg("Proficiency in ", "performance",1);
-                        ui->perf_chk->setCheckState(Qt::Checked);
-                    }
-                    else if(profsList[i] == "pers")
-                    {
-                        debugMsg("Proficiency in ", "persuasion",1);
-                        ui->pers_chk->setCheckState(Qt::Checked);
-                    }
+                levelProfMod +=3;
+            }
+            else if(ui->lvl_spin->value()>=9 && ui->lvl_spin->value()<12)
+            {
+                levelProfMod +=4;
+            }
+            else if(ui->lvl_spin->value()>=12 && ui->lvl_spin->value()<16)
+            {
+                levelProfMod +=5;
+            }
+            else if(ui->lvl_spin->value()>=16)
+            {
+                levelProfMod +=6;
+            }
 
+            if(true)
+            {
+                ui->athl_val->setText(QString::number(currentStrMod));
+                ui->acro_val->setText(QString::number(currentDexMod));
+                ui->slha_val->setText(QString::number(currentDexMod));
+                ui->stlh_val->setText(QString::number(currentDexMod));
+                ui->arca_val->setText(QString::number(currentIntMod));
+                ui->hist_val->setText(QString::number(currentIntMod));
+                ui->inve_val->setText(QString::number(currentIntMod));
+                ui->natr_val->setText(QString::number(currentIntMod));
+                ui->rlgn_val->setText(QString::number(currentIntMod));
+                ui->anha_val->setText(QString::number(currentWisMod));
+                ui->insi_val->setText(QString::number(currentWisMod));
+                ui->medi_val->setText(QString::number(currentWisMod));
+                ui->prcp_val->setText(QString::number(currentWisMod));
+                ui->srvl_val->setText(QString::number(currentWisMod));
+                ui->dcep_val->setText(QString::number(currentChaMod));
+                ui->intm_val->setText(QString::number(currentChaMod));
+                ui->perf_val->setText(QString::number(currentChaMod));
+                ui->pers_val->setText(QString::number(currentChaMod));
+            }
+            else
+            {
+
+            }
+            QStringList profsList = profs.split(',');
+            for(int i = 0; i < profsList.count(); i++)  //Switch case not possible with strings, makes this messier than I'd like
+            {
+                if(profsList[i] == "athl")
+                {
+                    debugMsg("Proficiency in athletcs, ", QString::number(currentStrMod + levelProfMod),1);
+                    ui->athl_chk->setCheckState(Qt::Checked);
+                    ui->athl_val->setText(QString::number(currentStrMod + levelProfMod));
+                }
+                else if(profsList[i] == "acro")
+                {
+                    debugMsg("Proficiency in acrobatics, ", QString::number(currentDexMod + levelProfMod),1);
+                    ui->acro_chk->setCheckState(Qt::Checked);
+                    ui->acro_val->setText(QString::number(currentDexMod + levelProfMod));
+                }
+                else if(profsList[i] == "slha")
+                {
+                    debugMsg("Proficiency in ", "sleight of hand",1);
+                    ui->slha_chk->setCheckState(Qt::Checked);
+                    ui->slha_val->setText(QString::number(currentDexMod + levelProfMod));
+                }
+                else if(profsList[i] == "stlh")
+                {
+                    debugMsg("Proficiency in ", "stealth",1);
+                    ui->stlh_chk->setCheckState(Qt::Checked);
+                    ui->stlh_val->setText(QString::number(currentDexMod + levelProfMod));
+                }
+                else if(profsList[i] == "arca")
+                {
+                    debugMsg("Proficiency in ", "arcana",1);
+                    ui->arca_chk->setCheckState(Qt::Checked);
+                    ui->arca_val->setText(QString::number(currentIntMod + levelProfMod));
+                }
+                else if(profsList[i] == "hist")
+                {
+                    debugMsg("Proficiency in ", "history",1);
+                    ui->hist_chk->setCheckState(Qt::Checked);
+                    ui->hist_val->setText(QString::number(currentIntMod + levelProfMod));
+                }
+                else if(profsList[i] == "inve")
+                {
+                    debugMsg("Proficiency in ", "investigation",1);
+                    ui->inve_chk->setCheckState(Qt::Checked);
+                    ui->inve_val->setText(QString::number(currentIntMod + levelProfMod));
+                }
+                else if(profsList[i] == "natr")
+                {
+                    debugMsg("Proficiency in ", "nature",1);
+                    ui->natr_chk->setCheckState(Qt::Checked);
+                    ui->natr_val->setText(QString::number(currentIntMod + levelProfMod));
+                }
+                else if(profsList[i] == "rlgn")
+                {
+                    debugMsg("Proficiency in ", "religion",1);
+                    ui->rlgn_chk->setCheckState(Qt::Checked);
+                    ui->rlgn_val->setText(QString::number(currentIntMod + levelProfMod));
+                }
+                else if(profsList[i] == "anha")
+                {
+                    debugMsg("Proficiency in ", "animal handling",1);
+                    ui->anha_chk->setCheckState(Qt::Checked);
+                    ui->anha_val->setText(QString::number(currentWisMod + levelProfMod));
+                }
+                else if(profsList[i] == "insi")
+                {
+                    debugMsg("Proficiency in ", "insight",1);
+                    ui->insi_chk->setCheckState(Qt::Checked);
+                    ui->insi_val->setText(QString::number(currentWisMod + levelProfMod));
+                }
+                else if(profsList[i] == "medi")
+                {
+                    debugMsg("Proficiency in ", "medicine",1);
+                    ui->medi_chk->setCheckState(Qt::Checked);
+                    ui->medi_val->setText(QString::number(currentWisMod + levelProfMod));
+                }
+                else if(profsList[i] == "prcp")
+                {
+                    debugMsg("Proficiency in ", "perception",1);
+                    ui->prcp_chk->setCheckState(Qt::Checked);
+                    ui->prcp_val->setText(QString::number(currentWisMod + levelProfMod));
+                }
+                else if(profsList[i] == "srvl")
+                {
+                    debugMsg("Proficiency in ", "survival",1);
+                    ui->srvl_chk->setCheckState(Qt::Checked);
+                    ui->srvl_val->setText(QString::number(currentWisMod + levelProfMod));
+                }
+                else if(profsList[i] == "dcep")
+                {
+                    debugMsg("Proficiency in ", "deception",1);
+                    ui->dcep_chk->setCheckState(Qt::Checked);
+                    ui->dcep_val->setText(QString::number(currentChaMod + levelProfMod));
+                }
+                else if(profsList[i] == "intm")
+                {
+                    debugMsg("Proficiency in ", "intimidation",1);
+                    ui->intm_chk->setCheckState(Qt::Checked);
+                    ui->intm_val->setText(QString::number(currentChaMod + levelProfMod));
+                }
+                else if(profsList[i] == "perf")
+                {
+                    debugMsg("Proficiency in ", "performance",1);
+                    ui->perf_chk->setCheckState(Qt::Checked);
+                    ui->perf_val->setText(QString::number(currentChaMod + levelProfMod));
+                }
+                else if(profsList[i] == "pers")
+                {
+                    debugMsg("Proficiency in ", "persuasion",1);
+                    ui->pers_chk->setCheckState(Qt::Checked);
+                    ui->pers_val->setText(QString::number(currentChaMod + levelProfMod));
                 }
 
             }
+
+        }
         //case 1: //other tab active
             //do stuff
            // ;
@@ -262,7 +333,7 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
             query.exec("CREATE TABLE CampaignData "
                        "(Param TEXT PRIMARY KEY, Value TEXT)");
             query.exec("CREATE TABLE GameData "
-                       "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, "
+                       "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, Level INTEGER, "
                        "Class_Subclass TEXT, Race TEXT, "
                        "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
                        "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
@@ -285,7 +356,7 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
             query.exec("CREATE TABLE CampaignData "
                        "(Param TEXT PRIMARY KEY, Value TEXT)");
             query.exec("CREATE TABLE GameData "
-                       "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, "
+                       "(Character TEXT PRIMARY KEY, RowID INTEGER, Player TEXT, Level INTEGER, "
                        "Class_Subclass TEXT, Race TEXT, "
                        "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
                        "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
@@ -442,7 +513,7 @@ void dmanager::on_class_subclass_editingFinished()
     }
 }
         /*      Stats & Profs       */
-        /* MNG TODO: Convert individual
+        /* TODO: Convert individual
          * slots into general slots
          * and connect to signals, once
          * I get that working       */
@@ -480,6 +551,7 @@ void dmanager::on_strMod_valueChanged(int arg1)
         {
             debugMsg("Character strength mod is: ",QString::number(arg1),1);
         }
+        updateFields();
     }
 }
 void dmanager::on_dexBaseSpin_valueChanged(int arg1)
@@ -516,6 +588,7 @@ void dmanager::on_dexMod_valueChanged(int arg1)
         {
             debugMsg("Character dexterity mod is: ",QString::number(arg1),1);
         }
+        updateFields();
     }
 }
 void dmanager::on_conBaseSpin_valueChanged(int arg1)
@@ -552,6 +625,7 @@ void dmanager::on_conMod_valueChanged(int arg1)
         {
             debugMsg("Character constitution mod is: ",QString::number(arg1),1);
         }
+        updateFields();
     }
 }
 void dmanager::on_intBaseSpin_valueChanged(int arg1)
@@ -588,6 +662,7 @@ void dmanager::on_intMod_valueChanged(int arg1)
         {
             debugMsg("Character intelligence mod is: ",QString::number(arg1),1);
         }
+        updateFields();
     }
 }
 void dmanager::on_wisBaseSpin_valueChanged(int arg1)
@@ -624,6 +699,7 @@ void dmanager::on_wisMod_valueChanged(int arg1)
         {
             debugMsg("Character wisdom mod is: ",QString::number(arg1),1);
         }
+        updateFields();
     }
 }
 void dmanager::on_chaBaseSpin_valueChanged(int arg1)
@@ -660,6 +736,7 @@ void dmanager::on_chaMod_valueChanged(int arg1)
         {
             debugMsg("Character charisma mod is: ",QString::number(arg1),1);
         }
+        updateFields();
     }
 }
 void dmanager::profToggle()
@@ -668,11 +745,11 @@ void dmanager::profToggle()
     QString profsList;
     if(true)        //for folding purposes
     {
-        if(ui->acro_chk->isChecked()==true)
+        if(ui->athl_chk->isChecked()==true)
         {
             profsList += "athl,";
         }
-        if(ui->athl_chk->isChecked()==true)
+        if(ui->acro_chk->isChecked()==true)
         {
             profsList += "acro,";
         }
@@ -753,4 +830,22 @@ void dmanager::profToggle()
     {
         debugMsg(currentChar + " skills: ", profsList,1);
     }
+    updateFields();
+}
+
+void dmanager::on_lvl_spin_valueChanged(int arg1)
+{
+    QSqlDatabase::database();
+    QSqlQuery setLevel;
+    setLevel.prepare("UPDATE GameData SET Level = :level WHERE Character = :charName" );
+    setLevel.bindValue(":charName",currentChar);
+    setLevel.bindValue(":level",ui->lvl_spin->value());
+    if(!setLevel.exec()){
+        debugMsg("Error setting level: " , setLevel.lastError().text(),2);
+    }
+    else
+    {
+        debugMsg(currentChar + " level is now: ", QString::number(arg1),1);
+    }
+    updateFields();
 }

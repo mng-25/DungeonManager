@@ -9,6 +9,7 @@ QT_END_NAMESPACE
 
 extern QString currentFile;
 extern QString currentChar;
+extern bool guidedmode;
 extern int debugmode;
 
 #endif // GLOBALS_H

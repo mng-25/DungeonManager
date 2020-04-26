@@ -52,6 +52,8 @@ private slots:
     void on_chaMod_valueChanged(int arg1);
     void profToggle();
 
+    void on_lvl_spin_valueChanged(int arg1);
+
 signals:
 
 private:

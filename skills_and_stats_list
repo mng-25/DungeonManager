@@ -1,25 +1,30 @@
-str
-dex
-con
-int
-wis
-cha
+str     athl
 
-athl
-acro
-slha
-stlh
-arca
-hist
-inve
-natr
-rlgn
-anha
-insi
-medi
-prcp
-srvl
-dcep
-intm
-perf
-pers
+dex     acro
+        slha
+        stlh
+
+con
+
+int     arca
+        hist
+        inve
+        natr
+        rlgn
+
+wis     anha
+        insi
+        medi
+        prcp
+        srvl
+
+cha     dcep
+        intm
+        perf
+        pers
+
+
+
+
+
+
