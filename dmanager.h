@@ -54,6 +54,18 @@ private slots:
 
     void on_lvl_spin_valueChanged(int arg1);
 
+    void on_spellsText_textChanged();
+    
+    void on_tabWidget_currentChanged(int index);
+
+    void on_inventoryText_textChanged();
+
+    void on_abilitiesText_textChanged();
+
+    void on_loreText_textChanged();
+
+    void on_notesText_textChanged();
+
 signals:
 
 private:

@@ -75,6 +75,7 @@ void dmanager::export_JSON()
 {
     debugMsg("Export triggered"," NOT YET IMPLEMENTED :)",1);
 }
+
 /*      General purpose slots      */
 void dmanager::updateFields()
 {
@@ -95,7 +96,8 @@ void dmanager::updateFields()
     }
     switch (ui->tabWidget->currentIndex())
     {
-        case 0: //stats_and_saves tab active
+    case 0: //stats_and_saves tab active
+    {
         /*ui->athl_chk->setCheckState(Qt::Unchecked);
         ui->acro_chk->setCheckState(Qt::Unchecked);
         ui->slha_chk->setCheckState(Qt::Unchecked);
@@ -135,7 +137,7 @@ void dmanager::updateFields()
             ui->dexMod->setValue(update.value(7).toInt());
             int currentDexMod = update.value(7).toInt();
             ui->conMod->setValue(update.value(8).toInt());
-            int currentConMod = update.value(8).toInt();
+            //int currentConMod = update.value(8).toInt();
             ui->intMod->setValue(update.value(9).toInt());
             int currentIntMod = update.value(9).toInt();
             ui->wisMod->setValue(update.value(10).toInt());
@@ -306,16 +308,58 @@ void dmanager::updateFields()
             }
 
         }
-        //case 1: //other tab active
-            //do stuff
-           // ;
-        //case 2: //other tab active
-            //do stuff
-           // ;
-        //case 3: //other tab active
-            //do stuff
-           // ;
-
+        break;
+    }
+    case 1: //spells and abilities tab active
+    {
+        QSqlQuery update1;
+        update1.prepare("SELECT Spells,Abilities "
+                       "FROM GameData WHERE Character = :charName");
+        update1.bindValue(":charName",currentChar);
+        if(!update1.exec())
+        {
+            debugMsg("Error updating spells: " , update1.lastError().text(),2);
+        }
+        while(update1.next())
+        {
+            ui->spellsText->setHtml(update1.value(0).toString());
+            ui->abilitiesText->setHtml(update1.value(1).toString());
+        }
+        break;
+    }
+    case 2: //inventory tab active
+    {
+        QSqlQuery update2;
+        update2.prepare("SELECT Inventory "
+                       "FROM GameData WHERE Character = :charName");
+        update2.bindValue(":charName",currentChar);
+        if(!update2.exec())
+        {
+            debugMsg("Error updating inventory: " , update2.lastError().text(),2);
+        }
+        while(update2.next())
+        {
+            ui->inventoryText->setHtml(update2.value(0).toString());
+        }
+        break;
+    }
+    case 3: //lore and notes tab active
+    {
+        QSqlQuery update3;
+        update3.prepare("SELECT Lore,Notes "
+                       "FROM GameData WHERE Character = :charName");
+        update3.bindValue(":charName",currentChar);
+        if(!update3.exec())
+        {
+            debugMsg("Error updating notes: " , update3.lastError().text(),2);
+        }
+        while(update3.next())
+        {
+            ui->loreText->setHtml(update3.value(0).toString());
+            ui->notesText->setHtml(update3.value(1).toString());
+        }
+        break;
+    }
     }
 }
 void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing data
@@ -337,7 +381,7 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
                        "Class_Subclass TEXT, Race TEXT, "
                        "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
                        "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
-                       "Profs TEXT)");
+                       "Profs TEXT, Spells TEXT, Abilities TEXT, Inventory TEXT, Lore TEXT, Notes TEXT)");
             debugMsg("Created database file: ", filename,1);
         }
         else    //opening existing db
@@ -372,8 +416,10 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
                 ui->campaignName->setText(query.value(0).toString());   // add fields as necessary
             }
             debugMsg("Opened database file: ", filename,2);
+            updateFields();
         }
     }
+
 
 }
 void dmanager::debugMsg(QString message, QString error, int level)
@@ -402,6 +448,11 @@ void dmanager::debugMsg(QString message, QString error, int level)
     }
 }
 /*      Data manipulation slots      */
+
+void dmanager::on_tabWidget_currentChanged(int index)
+{
+    updateFields();
+}
 void dmanager::on_charList_itemSelectionChanged()
 {
    updateFields();
@@ -832,14 +883,13 @@ void dmanager::profToggle()
     }
     updateFields();
 }
-
 void dmanager::on_lvl_spin_valueChanged(int arg1)
 {
     QSqlDatabase::database();
     QSqlQuery setLevel;
     setLevel.prepare("UPDATE GameData SET Level = :level WHERE Character = :charName" );
     setLevel.bindValue(":charName",currentChar);
-    setLevel.bindValue(":level",ui->lvl_spin->value());
+    setLevel.bindValue(":level",arg1);
     if(!setLevel.exec()){
         debugMsg("Error setting level: " , setLevel.lastError().text(),2);
     }
@@ -848,4 +898,99 @@ void dmanager::on_lvl_spin_valueChanged(int arg1)
         debugMsg(currentChar + " level is now: ", QString::number(arg1),1);
     }
     updateFields();
+}
+
+void dmanager::on_spellsText_textChanged()
+{
+    if(true)    // possibly filter double inputs, in fututre
+    {
+        QSqlDatabase::database();
+        QSqlQuery setSpells;
+        setSpells.prepare("UPDATE GameData SET Spells = :text WHERE Character = :charName" );
+        setSpells.bindValue(":charName",currentChar);
+        setSpells.bindValue(":text",ui->spellsText->toHtml());
+        if(!setSpells.exec()){
+            debugMsg("Error setting spells: " , setSpells.lastError().text(),2);
+        }
+        else
+        {
+            debugMsg("Spells set","",1);
+        }
+    }
+}
+
+void dmanager::on_inventoryText_textChanged()
+{
+    if(true)    // possibly filter double inputs, in fututre
+    {
+        QSqlDatabase::database();
+        QSqlQuery setInventory;
+        setInventory.prepare("UPDATE GameData SET Inventory = :text WHERE Character = :charName" );
+        setInventory.bindValue(":charName",currentChar);
+        setInventory.bindValue(":text",ui->inventoryText->toHtml());
+        if(!setInventory.exec()){
+            debugMsg("Error setting inventory: " , setInventory.lastError().text(),2);
+        }
+        else
+        {
+            debugMsg("Inventory set","",1);
+        }
+    }
+}
+
+void dmanager::on_abilitiesText_textChanged()
+{
+    if(true)    // possibly filter double inputs, in fututre
+    {
+        QSqlDatabase::database();
+        QSqlQuery setAbilities;
+        setAbilities.prepare("UPDATE GameData SET Abilities = :text WHERE Character = :charName" );
+        setAbilities.bindValue(":charName",currentChar);
+        setAbilities.bindValue(":text",ui->abilitiesText->toHtml());
+        if(!setAbilities.exec()){
+            debugMsg("Error setting abilities: " , setAbilities.lastError().text(),2);
+        }
+        else
+        {
+            debugMsg("Abilities set","",1);
+        }
+    }
+}
+
+void dmanager::on_loreText_textChanged()
+{
+    if(true)    // possibly filter double inputs, in fututre
+    {
+        QSqlDatabase::database();
+        QSqlQuery setLore;
+        setLore.prepare("UPDATE GameData SET Lore = :text WHERE Character = :charName" );
+        setLore.bindValue(":charName",currentChar);
+        setLore.bindValue(":text",ui->loreText->toHtml());
+        if(!setLore.exec()){
+            debugMsg("Error setting lore: " , setLore.lastError().text(),2);
+        }
+        else
+        {
+            debugMsg("Lore set","",1);
+        }
+    }
+}
+
+void dmanager::on_notesText_textChanged()
+{
+    if(true)    // possibly filter double inputs, in fututre
+    {
+        QSqlDatabase::database();
+        QSqlQuery setNotes;
+        setNotes.prepare("UPDATE GameData SET Notes = :text WHERE Character = :charName" );
+        setNotes.bindValue(":charName",currentChar);
+        setNotes.bindValue(":text",ui->notesText->toHtml());
+        if(!setNotes.exec()){
+            debugMsg("Error setting notes: " , setNotes.lastError().text(),2);
+        }
+        else
+        {
+            debugMsg("Notes set","",1);
+        }
+    }
 }

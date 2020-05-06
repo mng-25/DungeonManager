@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1391</width>
+    <width>1400</width>
     <height>843</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>340</x>
       <y>170</y>
-      <width>1041</width>
+      <width>1051</width>
       <height>621</height>
      </rect>
     </property>
@@ -619,7 +619,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Base Stats</string>
+          <string>Stats &amp; Skills</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -825,20 +825,128 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab0">
+    <widget class="QWidget" name="spells_and_abilities">
      <attribute name="title">
-      <string>Page 0</string>
+      <string>Spells and Abilities</string>
      </attribute>
+     <widget class="QTextEdit" name="spellsText">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>501</width>
+        <height>500</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="abilitiesText">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>80</y>
+        <width>511</width>
+        <height>500</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="spellsLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Spells</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="abilitiesLabel">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Abilities</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab1">
+    <widget class="QWidget" name="inventory">
      <attribute name="title">
-      <string>Page1</string>
+      <string>Inventory</string>
      </attribute>
+     <widget class="QTextEdit" name="inventoryText">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>1021</width>
+        <height>500</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab2">
+    <widget class="QWidget" name="lore_and_notes">
      <attribute name="title">
-      <string>Page 2</string>
+      <string>Lore and Notes</string>
      </attribute>
+     <widget class="QTextEdit" name="loreText">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>501</width>
+        <height>500</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="notesText">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>80</y>
+        <width>511</width>
+        <height>500</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="loreLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lore</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="notesLabel">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Notes</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="addCharButton">
@@ -1033,7 +1141,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1391</width>
+     <width>1400</width>
      <height>21</height>
     </rect>
    </property>
@@ -1059,6 +1167,7 @@
     <property name="title">
      <string>View</string>
     </property>
+    <addaction name="actionCalendar"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -1123,6 +1232,11 @@
    </property>
    <property name="toolTip">
     <string>Play without built-in stat calculation, etc. Total control.</string>
+   </property>
+  </action>
+  <action name="actionCalendar">
+   <property name="text">
+    <string>Calendar</string>
    </property>
   </action>
  </widget>
