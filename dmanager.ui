@@ -78,6 +78,9 @@
          <property name="checked">
           <bool>false</bool>
          </property>
+         <property name="tristate">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="4" column="7">
@@ -99,6 +102,9 @@
          </property>
          <property name="text">
           <string>Survival</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -153,6 +159,9 @@
          </property>
          <property name="text">
           <string>Religion</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -216,6 +225,9 @@
          <property name="text">
           <string>Performance</string>
          </property>
+         <property name="tristate">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="2" column="4" rowspan="4">
@@ -234,6 +246,9 @@
          </property>
          <property name="text">
           <string>Stealth</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -284,6 +299,9 @@
          </property>
          <property name="text">
           <string>Persuasion</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -345,6 +363,9 @@
          <property name="text">
           <string>Perception</string>
          </property>
+         <property name="tristate">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="5" column="17" colspan="2">
@@ -356,6 +377,9 @@
          </property>
          <property name="text">
           <string>Medicine</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -397,6 +421,9 @@
          <property name="text">
           <string>Nature</string>
          </property>
+         <property name="tristate">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="2" column="19">
@@ -424,6 +451,9 @@
          <property name="text">
           <string>Insight</string>
          </property>
+         <property name="tristate">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="3" column="13" colspan="2">
@@ -435,6 +465,9 @@
          </property>
          <property name="text">
           <string>Arcana</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -468,6 +501,9 @@
          <property name="text">
           <string>Deception</string>
          </property>
+         <property name="tristate">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="5" column="13" colspan="2">
@@ -479,6 +515,9 @@
          </property>
          <property name="text">
           <string>Investigation</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -519,6 +558,9 @@
          </property>
          <property name="text">
           <string>Animal Handling</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -562,6 +604,9 @@
          </property>
          <property name="text">
           <string>Sleight of Hand</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -669,6 +714,15 @@
          <property name="text">
           <string>Athletics</string>
          </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoRepeat">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="2" column="0">
@@ -706,6 +760,9 @@
          </property>
          <property name="text">
           <string>History</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -763,6 +820,9 @@
          </property>
          <property name="text">
           <string>Intimidation</string>
+         </property>
+         <property name="tristate">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

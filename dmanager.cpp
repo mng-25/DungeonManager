@@ -21,24 +21,24 @@ dmanager::dmanager(QWidget *parent) :QMainWindow(parent), ui(new Ui::dmanager)
     connect(ui->n_campaign, &QAction::triggered,this, &dmanager::setNewFileName);
     connect(ui->exportJSON, &QAction::triggered,this, &dmanager::export_JSON);
 
-    connect(ui->athl_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->acro_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->slha_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->stlh_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->arca_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->hist_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->inve_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->natr_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->rlgn_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->anha_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->insi_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->medi_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->prcp_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->srvl_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->dcep_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->intm_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->perf_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
-    connect(ui->pers_chk, &QCheckBox::toggled,this, &dmanager::profToggle);
+    connect(ui->athl_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->acro_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->slha_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->stlh_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->arca_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->hist_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->inve_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->natr_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->rlgn_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->anha_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->insi_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->medi_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->prcp_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->srvl_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->dcep_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->intm_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->perf_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
+    connect(ui->pers_chk, &QCheckBox::clicked,this, &dmanager::profToggle);
 
     openDB(":memory:",true);
 }
@@ -73,19 +73,37 @@ void dmanager::setNewFileName()
 {
     QSqlDatabase::database().close();
     QString newFileName = QFileDialog::getSaveFileName(this,tr("Save Campaign As - DManager"));
-    currentFile = newFileName;
-    openDB(newFileName,true);
+    if (newFileName == "")
+    {
+        newFileName = ":memory:";
+        currentFile = newFileName;
+    }
+    else
+    {
+        currentFile = newFileName;
+        openDB(newFileName,true);
+    }
+
 }
 void dmanager::setOpenFileName()
 {
     QString openFileName = QFileDialog::getOpenFileName(this,tr("Open Campaign - DManager"));
-    currentFile = openFileName;
-    /*if(a database is currently connected)
+    if (openFileName == "")
     {
-        close database
-    }*/
-    openDB(openFileName, false);
-    updateFields();
+        openFileName = ":memory:";
+        currentFile = openFileName;
+    }
+    else
+    {
+        /*if(a database is currently connected)
+        {
+            close database
+        }*/
+        currentFile = openFileName;
+        openDB(openFileName, false);
+        updateFields();
+    }
+
 }
 void dmanager::setSaveFileName()
 {
@@ -118,7 +136,7 @@ void dmanager::updateFields()
     {
     case 0: //stats_and_saves tab active
     {
-        /*ui->athl_chk->setCheckState(Qt::Unchecked);
+        ui->athl_chk->setCheckState(Qt::Unchecked);
         ui->acro_chk->setCheckState(Qt::Unchecked);
         ui->slha_chk->setCheckState(Qt::Unchecked);
         ui->stlh_chk->setCheckState(Qt::Unchecked);
@@ -135,7 +153,7 @@ void dmanager::updateFields()
         ui->dcep_chk->setCheckState(Qt::Unchecked);
         ui->intm_chk->setCheckState(Qt::Unchecked);
         ui->perf_chk->setCheckState(Qt::Unchecked);
-        ui->pers_chk->setCheckState(Qt::Unchecked);*/
+        ui->pers_chk->setCheckState(Qt::Unchecked);
         QSqlQuery update;
         update.prepare("SELECT StrBase,DexBase,ConBase,IntBase,WisBase,ChaBase,StrMod,DexMod,ConMod,IntMod,WisMod,ChaMod,Profs "
                        "FROM GameData WHERE Character = :charName");
@@ -157,7 +175,7 @@ void dmanager::updateFields()
             ui->dexMod->setValue(update.value(7).toInt());
             int currentDexMod = update.value(7).toInt();
             ui->conMod->setValue(update.value(8).toInt());
-            //int currentConMod = update.value(8).toInt();
+            int currentConMod = update.value(8).toInt();
             ui->intMod->setValue(update.value(9).toInt());
             int currentIntMod = update.value(9).toInt();
             ui->wisMod->setValue(update.value(10).toInt());
@@ -219,109 +237,109 @@ void dmanager::updateFields()
                 if(profsList[i] == "athl")
                 {
                     debugMsg("Proficiency in athletcs, ", QString::number(currentStrMod + levelProfMod),1);
-                    ui->athl_chk->setCheckState(Qt::Checked);
+                    ui->athl_chk->setCheckState(Qt::PartiallyChecked);
                     ui->athl_val->setText(QString::number(currentStrMod + levelProfMod));
                 }
                 else if(profsList[i] == "acro")
                 {
                     debugMsg("Proficiency in acrobatics, ", QString::number(currentDexMod + levelProfMod),1);
-                    ui->acro_chk->setCheckState(Qt::Checked);
+                    ui->acro_chk->setCheckState(Qt::PartiallyChecked);
                     ui->acro_val->setText(QString::number(currentDexMod + levelProfMod));
                 }
                 else if(profsList[i] == "slha")
                 {
                     debugMsg("Proficiency in ", "sleight of hand",1);
-                    ui->slha_chk->setCheckState(Qt::Checked);
+                    ui->slha_chk->setCheckState(Qt::PartiallyChecked);
                     ui->slha_val->setText(QString::number(currentDexMod + levelProfMod));
                 }
                 else if(profsList[i] == "stlh")
                 {
                     debugMsg("Proficiency in ", "stealth",1);
-                    ui->stlh_chk->setCheckState(Qt::Checked);
+                    ui->stlh_chk->setCheckState(Qt::PartiallyChecked);
                     ui->stlh_val->setText(QString::number(currentDexMod + levelProfMod));
                 }
                 else if(profsList[i] == "arca")
                 {
                     debugMsg("Proficiency in ", "arcana",1);
-                    ui->arca_chk->setCheckState(Qt::Checked);
+                    ui->arca_chk->setCheckState(Qt::PartiallyChecked);
                     ui->arca_val->setText(QString::number(currentIntMod + levelProfMod));
                 }
                 else if(profsList[i] == "hist")
                 {
                     debugMsg("Proficiency in ", "history",1);
-                    ui->hist_chk->setCheckState(Qt::Checked);
+                    ui->hist_chk->setCheckState(Qt::PartiallyChecked);
                     ui->hist_val->setText(QString::number(currentIntMod + levelProfMod));
                 }
                 else if(profsList[i] == "inve")
                 {
                     debugMsg("Proficiency in ", "investigation",1);
-                    ui->inve_chk->setCheckState(Qt::Checked);
+                    ui->inve_chk->setCheckState(Qt::PartiallyChecked);
                     ui->inve_val->setText(QString::number(currentIntMod + levelProfMod));
                 }
                 else if(profsList[i] == "natr")
                 {
                     debugMsg("Proficiency in ", "nature",1);
-                    ui->natr_chk->setCheckState(Qt::Checked);
+                    ui->natr_chk->setCheckState(Qt::PartiallyChecked);
                     ui->natr_val->setText(QString::number(currentIntMod + levelProfMod));
                 }
                 else if(profsList[i] == "rlgn")
                 {
                     debugMsg("Proficiency in ", "religion",1);
-                    ui->rlgn_chk->setCheckState(Qt::Checked);
+                    ui->rlgn_chk->setCheckState(Qt::PartiallyChecked);
                     ui->rlgn_val->setText(QString::number(currentIntMod + levelProfMod));
                 }
                 else if(profsList[i] == "anha")
                 {
                     debugMsg("Proficiency in ", "animal handling",1);
-                    ui->anha_chk->setCheckState(Qt::Checked);
+                    ui->anha_chk->setCheckState(Qt::PartiallyChecked);
                     ui->anha_val->setText(QString::number(currentWisMod + levelProfMod));
                 }
                 else if(profsList[i] == "insi")
                 {
                     debugMsg("Proficiency in ", "insight",1);
-                    ui->insi_chk->setCheckState(Qt::Checked);
+                    ui->insi_chk->setCheckState(Qt::PartiallyChecked);
                     ui->insi_val->setText(QString::number(currentWisMod + levelProfMod));
                 }
                 else if(profsList[i] == "medi")
                 {
                     debugMsg("Proficiency in ", "medicine",1);
-                    ui->medi_chk->setCheckState(Qt::Checked);
+                    ui->medi_chk->setCheckState(Qt::PartiallyChecked);
                     ui->medi_val->setText(QString::number(currentWisMod + levelProfMod));
                 }
                 else if(profsList[i] == "prcp")
                 {
                     debugMsg("Proficiency in ", "perception",1);
-                    ui->prcp_chk->setCheckState(Qt::Checked);
+                    ui->prcp_chk->setCheckState(Qt::PartiallyChecked);
                     ui->prcp_val->setText(QString::number(currentWisMod + levelProfMod));
                 }
                 else if(profsList[i] == "srvl")
                 {
                     debugMsg("Proficiency in ", "survival",1);
-                    ui->srvl_chk->setCheckState(Qt::Checked);
+                    ui->srvl_chk->setCheckState(Qt::PartiallyChecked);
                     ui->srvl_val->setText(QString::number(currentWisMod + levelProfMod));
                 }
                 else if(profsList[i] == "dcep")
                 {
                     debugMsg("Proficiency in ", "deception",1);
-                    ui->dcep_chk->setCheckState(Qt::Checked);
+                    ui->dcep_chk->setCheckState(Qt::PartiallyChecked);
                     ui->dcep_val->setText(QString::number(currentChaMod + levelProfMod));
                 }
                 else if(profsList[i] == "intm")
                 {
                     debugMsg("Proficiency in ", "intimidation",1);
-                    ui->intm_chk->setCheckState(Qt::Checked);
+                    ui->intm_chk->setCheckState(Qt::PartiallyChecked);
                     ui->intm_val->setText(QString::number(currentChaMod + levelProfMod));
                 }
                 else if(profsList[i] == "perf")
                 {
                     debugMsg("Proficiency in ", "performance",1);
-                    ui->perf_chk->setCheckState(Qt::Checked);
+                    ui->perf_chk->setCheckState(Qt::PartiallyChecked);
                     ui->perf_val->setText(QString::number(currentChaMod + levelProfMod));
                 }
                 else if(profsList[i] == "pers")
                 {
                     debugMsg("Proficiency in ", "persuasion",1);
-                    ui->pers_chk->setCheckState(Qt::Checked);
+                    ui->pers_chk->setCheckState(Qt::PartiallyChecked);
                     ui->pers_val->setText(QString::number(currentChaMod + levelProfMod));
                 }
 
@@ -401,7 +419,7 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
                        "Class_Subclass TEXT, Race TEXT, "
                        "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
                        "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
-                       "Profs TEXT, Spells TEXT, Abilities TEXT, Inventory TEXT, Lore TEXT, Notes TEXT)");
+                       "Profs TEXT, Xprt TEXT, Spells TEXT, Abilities TEXT, Inventory TEXT, Lore TEXT, Notes TEXT)");
             debugMsg("Created database file: ", filename,1);
         }
         else    //opening existing db
@@ -424,7 +442,7 @@ void dmanager::openDB(QString filename, bool newdb)  //true to wipe existing dat
                        "Class_Subclass TEXT, Race TEXT, "
                        "StrBase INTEGER, DexBase INTEGER, ConBase INTEGER, IntBase INTEGER, WisBase INTEGER, ChaBase INTEGER,"
                        "StrMod INTEGER, DexMod INTEGER, ConMod INTEGER, IntMod INTEGER, WisMod INTEGER, ChaMod INTEGER, "
-                       "Profs TEXT)");
+                       "Profs TEXT, Xprt TEXT, Spells TEXT, Abilities TEXT, Inventory TEXT, Lore TEXT, Notes TEXT)");
             query.prepare("SELECT Value FROM CampaignData WHERE Param = 'CampaignName'"); // fetch campaign metadata
             if(!query.exec())
             {
@@ -814,81 +832,157 @@ void dmanager::profToggle()
 {
     debugMsg(sender()->objectName(), " toggled", 1);
     QString profsList;
-    if(true)        //for folding purposes
+    QString xprtList;
+    if(true)        //proficiency - for folding purposes
     {
-        if(ui->athl_chk->isChecked()==true)
+        if(ui->athl_chk->checkState()==1)
         {
             profsList += "athl,";
         }
-        if(ui->acro_chk->isChecked()==true)
+        if(ui->acro_chk->checkState()==1)
         {
             profsList += "acro,";
         }
-        if(ui->slha_chk->isChecked()==true)
+        if(ui->slha_chk->checkState()==1)
         {
             profsList += "slha,";
         }
-        if(ui->stlh_chk->isChecked()==true)
+        if(ui->stlh_chk->checkState()==1)
         {
             profsList += "stlh,";
         }
-        if(ui->arca_chk->isChecked()==true)
+        if(ui->arca_chk->checkState()==1)
         {
             profsList += "arca,";
         }
-        if(ui->hist_chk->isChecked()==true)
+        if(ui->hist_chk->checkState()==1)
         {
             profsList += "hist,";
         }
-        if(ui->inve_chk->isChecked()==true)
+        if(ui->inve_chk->checkState()==1)
         {
             profsList += "inve,";
         }
-        if(ui->natr_chk->isChecked()==true)
+        if(ui->natr_chk->checkState()==1)
         {
             profsList += "natr,";
         }
-        if(ui->rlgn_chk->isChecked()==true)
+        if(ui->rlgn_chk->checkState()==1)
         {
             profsList += "rlgn,";
         }
-        if(ui->anha_chk->isChecked()==true)
+        if(ui->anha_chk->checkState()==1)
         {
             profsList += "anha,";
         }
-        if(ui->insi_chk->isChecked()==true)
+        if(ui->insi_chk->checkState()==1)
         {
             profsList += "insi,";
         }
-        if(ui->medi_chk->isChecked()==true)
+        if(ui->medi_chk->checkState()==1)
         {
             profsList += "medi,";
         }
-        if(ui->prcp_chk->isChecked()==true)
+        if(ui->prcp_chk->checkState()==1)
         {
             profsList += "prcp,";
         }
-        if(ui->srvl_chk->isChecked()==true)
+        if(ui->srvl_chk->checkState()==1)
         {
             profsList += "srvl,";
         }
-        if(ui->dcep_chk->isChecked()==true)
+        if(ui->dcep_chk->checkState()==1)
         {
             profsList += "dcep,";
         }
-        if(ui->intm_chk->isChecked()==true)
+        if(ui->intm_chk->checkState()==1)
         {
             profsList += "intm,";
         }
-        if(ui->perf_chk->isChecked()==true)
+        if(ui->perf_chk->checkState()==1)
         {
             profsList += "perf,";
         }
-        if(ui->pers_chk->isChecked()==true)
+        if(ui->pers_chk->checkState()==1)
         {
             profsList += "pers,";
         }
     }
+    /*if(true)        //expertise - for folding purposes
+    {
+        if(ui->athl_chk->checkState()==2)
+        {
+            xprtList += "athl,";
+        }
+        if(ui->acro_chk->checkState()==2)
+        {
+            xprtList += "acro,";
+        }
+        if(ui->slha_chk->checkState()==2)
+        {
+            xprtList += "slha,";
+        }
+        if(ui->stlh_chk->checkState()==2)
+        {
+            xprtList += "stlh,";
+        }
+        if(ui->arca_chk->checkState()==2)
+        {
+            xprtList += "arca,";
+        }
+        if(ui->hist_chk->checkState()==2)
+        {
+            xprtList += "hist,";
+        }
+        if(ui->inve_chk->checkState()==2)
+        {
+            xprtList += "inve,";
+        }
+        if(ui->natr_chk->checkState()==2)
+        {
+            xprtList += "natr,";
+        }
+        if(ui->rlgn_chk->checkState()==2)
+        {
+            xprtList += "rlgn,";
+        }
+        if(ui->anha_chk->checkState()==2)
+        {
+            xprtList += "anha,";
+        }
+        if(ui->insi_chk->checkState()==2)
+        {
+            xprtList += "insi,";
+        }
+        if(ui->medi_chk->checkState()==2)
+        {
+            xprtList += "medi,";
+        }
+        if(ui->prcp_chk->checkState()==2)
+        {
+            xprtList += "prcp,";
+        }
+        if(ui->srvl_chk->checkState()==2)
+        {
+            xprtList += "srvl,";
+        }
+        if(ui->dcep_chk->checkState()==2)
+        {
+            xprtList += "dcep,";
+        }
+        if(ui->intm_chk->checkState()==2)
+        {
+            xprtList += "intm,";
+        }
+        if(ui->perf_chk->checkState()==2)
+        {
+            xprtList += "perf,";
+        }
+        if(ui->pers_chk->checkState()==2)
+        {
+            xprtList += "pers,";
+        }
+    }*/
     QSqlDatabase::database();
     QSqlQuery setProf;
     setProf.prepare("UPDATE GameData SET Profs = :prof WHERE Character = :charName" );
