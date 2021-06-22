@@ -5,7 +5,7 @@ The aim of this project is to bring the functionality of web-based DnD services 
 
 <h1>Update! Revived 6/22/2021 </h1>
 
-  <li>Reordering of characters now persistent. Regression on proficiencies
+  <li>Reordering of characters now persistent. Regression on proficiencies fixed.
 
 <h1>Update! As of 4/14/2020 </h1>
 
