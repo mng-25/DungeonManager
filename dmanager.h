@@ -66,6 +66,8 @@ private slots:
 
     void on_notesText_textChanged();
 
+    void on_killCharButton_clicked();
+
 signals:
 
 private:

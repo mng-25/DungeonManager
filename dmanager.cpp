@@ -509,6 +509,32 @@ void dmanager::on_addCharButton_clicked()
         debugMsg("Error adding character: " , newChar.lastError().text(),2);
     }
 }
+void dmanager::on_killCharButton_clicked()
+{
+    QSqlDatabase::database();
+    QSqlQuery deleteCharacter;
+    deleteCharacter.prepare("DELETE FROM GameData WHERE Character = :charName" );
+    deleteCharacter.bindValue(":charName",currentChar);
+    ui->charList->takeItem(ui->charList->currentRow());
+    if(!deleteCharacter.exec()){
+        debugMsg("Error deleting character: " , deleteCharacter.lastError().text(),2);
+    }
+    else
+    {
+        debugMsg("Character killed","",1);
+    }
+
+    QList<QListWidgetItem*> items = ui->charList->selectedItems();
+    if(items.length() > 0)
+    {
+        updateFields();
+    }
+    else
+    {
+        debugMsg("No characters left","",1);
+    }
+}
+
 void dmanager::on_campaignName_editingFinished()
 {
     QSqlDatabase::database();
@@ -1108,6 +1134,8 @@ void dmanager::on_notesText_textChanged()
         }
     }
 }
+
+
 
 
 
