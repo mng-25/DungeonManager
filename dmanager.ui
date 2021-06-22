@@ -163,6 +163,9 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stat Modifier&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="minimum">
           <number>-99</number>
          </property>
@@ -194,6 +197,9 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stat Modifier&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="minimum">
           <number>-99</number>
@@ -370,6 +376,15 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="toolTip">
+          <string extracomment="&quot;Base Stat&quot;">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Base Stat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>1</number>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
         </widget>
        </item>
        <item row="6" column="13" colspan="2">
@@ -390,6 +405,9 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stat Modifier&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="minimum">
           <number>-99</number>
@@ -481,6 +499,15 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="toolTip">
+          <string extracomment="Base Stat">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Base Stat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>1</number>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
         </widget>
        </item>
        <item row="3" column="17" colspan="2">
@@ -566,6 +593,9 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stat Modifier&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="minimum">
           <number>-99</number>
          </property>
@@ -587,6 +617,9 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stat Modifier&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="minimum">
           <number>-99</number>
@@ -713,6 +746,9 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stat Modifier&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="minimum">
           <number>-99</number>
          </property>
@@ -777,6 +813,15 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="toolTip">
+          <string extracomment="Base Stat">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Base Stat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>1</number>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
         </widget>
        </item>
        <item row="2" column="21" colspan="2">
@@ -785,6 +830,15 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string extracomment="Base Stat">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Base Stat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>1</number>
+         </property>
+         <property name="whatsThis">
+          <string/>
          </property>
         </widget>
        </item>
@@ -795,6 +849,15 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="toolTip">
+          <string extracomment="Base Stat">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Base Stat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>1</number>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
         </widget>
        </item>
        <item row="2" column="9" colspan="2">
@@ -803,6 +866,15 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="toolTip">
+          <string extracomment="Base Stat">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Base Stat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>1</number>
+         </property>
+         <property name="whatsThis">
+          <string/>
          </property>
         </widget>
        </item>
@@ -998,6 +1070,9 @@
     <property name="text">
      <string>Character Name</string>
     </property>
+    <property name="placeholderText">
+     <string>Character Name</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="playerName">
     <property name="geometry">
@@ -1015,6 +1090,9 @@
      <number>5</number>
     </property>
     <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
      <string>Player Name</string>
     </property>
    </widget>
@@ -1065,6 +1143,9 @@
      <number>5</number>
     </property>
     <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
      <string>(Sub)Class</string>
     </property>
    </widget>
@@ -1084,6 +1165,9 @@
      <number>5</number>
     </property>
     <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
      <string>Race</string>
     </property>
    </widget>
@@ -1100,6 +1184,12 @@
      <font>
       <pointsize>20</pointsize>
      </font>
+    </property>
+    <property name="dragEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="dragDropMode">
+     <enum>QAbstractItemView::InternalMove</enum>
     </property>
    </widget>
    <widget class="QSpinBox" name="lvl_spin">

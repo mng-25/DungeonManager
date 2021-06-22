@@ -4,5 +4,5 @@
 
 QString currentFile = "";
 QString currentChar = "";
-int debugmode = 1;
+int debugmode = 2;
 bool guidedmode = false;

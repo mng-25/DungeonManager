@@ -44,6 +44,26 @@ dmanager::dmanager(QWidget *parent) :QMainWindow(parent), ui(new Ui::dmanager)
 }
 dmanager::~dmanager()
 {
+    if(true)    // possibly filter double inputs, in fututre
+    {
+
+            for (int i = 0; i < ui->charList->count(); ++i)
+            {
+                currentChar = ui->charList->item(i)->text();
+                QSqlDatabase::database();
+                QSqlQuery updateIndex;
+                updateIndex.prepare("UPDATE GameData SET RowID = :index WHERE Character = :charName" );
+                updateIndex.bindValue(":charName",currentChar);
+                updateIndex.bindValue(":index",i);
+                if(!updateIndex.exec()){
+                    debugMsg("Error updateing index: " , updateIndex.lastError().text(),2);
+                }
+                else
+                {
+                    debugMsg("Indexes set","",1);
+                }
+            }
+    }
     delete ui;
     QSqlDatabase::database().commit();
     QSqlDatabase::database().close();
@@ -69,7 +89,7 @@ void dmanager::setOpenFileName()
 }
 void dmanager::setSaveFileName()
 {
-        QString saveFileName = QFileDialog::getSaveFileName(this,tr("Save Campaign As - DManager"));
+    QString saveFileName = QFileDialog::getSaveFileName(this,tr("Save Campaign As - DManager"));
 }
 void dmanager::export_JSON()
 {
@@ -994,3 +1014,6 @@ void dmanager::on_notesText_textChanged()
         }
     }
 }
+
+
+
